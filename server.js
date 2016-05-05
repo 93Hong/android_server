@@ -27,7 +27,7 @@ function create_id() {
         var params = {};
         params.type = "ping";
 
-        if (client.socket.write(JSON.stringify(params) + '\n')) {
+        if (client.socket.write("data\n")) {//JSON.stringify(params) + '\n'
             console.log("ping send");
         } else {
             clients.splice(i, 1);
@@ -50,6 +50,11 @@ var server = net.createServer(function(socket) {
         try {
             var packet = JSON.parse(data);
 
+            if(packet.type == "test") {
+              console.log(packet.content);
+              socket.write(packet.content + "\n");
+            }
+
             if (packet.type == "register") {
                 var client = [];
 
@@ -66,7 +71,7 @@ var server = net.createServer(function(socket) {
                 params.type = "register";
                 params.clientID = client.clientID;
 
-                socket.write(JSON.stringify(params + '\n')); // [object Object]\n
+                socket.write(JSON.stringify(params.type + " " + params.clientID) + "\n"); // [object Object]\n
 
                 console.log("Registered client : " + params.clientID + " user : " + packet.username);
             }
