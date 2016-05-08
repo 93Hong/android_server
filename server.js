@@ -240,7 +240,6 @@ var server = net.createServer(function(socket) {
         }
     });
 });
-var a = "123";
 server.listen(52273, function() {
     //'listening' listener
     console.log('Server is listening for incoming connections');
