@@ -2,8 +2,8 @@ var net = require('net');
 
 var mongoose = require('mongoose');
 
-mongoose.connect("mongodb://hong:honghong@ds015962.mlab.com:15962/mobile");
-//mongoose.connect(process.env.MONGO_DB);
+//mongoose.connect("mongodb://hong:honghong@ds015962.mlab.com:15962/mobile");
+mongoose.connect(process.env.MONGO_DB);
 var db = mongoose.connection;
 db.once("open", function() {
     console.log("DB connected!");
@@ -13,8 +13,8 @@ db.on("error", function(err) {
 });
 
 var c = mongoose.Schema({
-    username : String,
-    email : String
+    username: String,
+    email: String
 });
 var C = mongoose.model('c', c);
 
@@ -78,28 +78,6 @@ var parentSchema = mongoose.Schema({
 });
 var Parent = mongoose.model('parent', parentSchema);
 
-/*Child.findOne({name:"myData"}, function(err, data) {
-  if (err) return console.log("Data error ", err);
-  if (!data) {
-    Child.create({name:"myData", count:0}, function (err, data) { // create variable
-      if (err) return console.log("Data error ", err);
-      console.log("Counter initialized ", data);
-    });
-  } else if (data) {
-    console.log("Already exist :", data);
-  }
-});*/
-
-/*Child.findOne({name: "myData"}, function(err, data) { // update
-  data.count++;
-  data.save(function (err) {
-    if (err) console.log("Data error : ", err);
-    else {
-      console.log("Count increase ", data);
-    }
-  });
-});*/
-
 var clients = [];
 var count = 0;
 var messages = [];
@@ -137,11 +115,6 @@ function create_id() {
 /////////////////////////////////////////////////
 // get db query //
 /////////////////////////////////////////////////
-
-/*function getChildQuery(name) {// multiple compare
-  var query = Child.find({username:name});
-  return query;
-}*/
 
 function getChildQuery(name) { // use for LOGIN child
     var query = Child.findOne({
@@ -193,8 +166,9 @@ var server = net.createServer(function(socket) {
             }*/
 
             if (packet.type == "test") {
-              socket.write(packet.content + '\n');
-              return console.log(packet.content);
+
+                socket.write(packet.content + '\n');
+                return console.log(packet.content);
             }
 
             if (packet.type == "login") { // LOGIN
@@ -206,13 +180,13 @@ var server = net.createServer(function(socket) {
                 query.exec(function(err, data) {
                     if (err) return console.log(err);
                     if (data === null) {
-                        socket.write("1-2\n");//Wrong ID
+                        socket.write("1-2\n"); //Wrong ID
                         return console.log("Wrong ID");
                     } else if (packet.password == data.password) {
-                        socket.write("1-1\n");//Login ok
+                        socket.write("1-1\n"); //Login ok
                         return console.log(data.username, " login");
                     } else {
-                        socket.write("1-2\n");//Wrong password
+                        socket.write("1-2\n"); //Wrong password
                         return console.log("Wrong password");
                     }
                 });
@@ -239,24 +213,23 @@ var server = net.createServer(function(socket) {
                         if (!data) {
                             getParentQuery(packet.parentName).exec(function(err, data) {
                                 if (data === null) {
-                                    socket.write("2-2\n");//Wrong parent name
+                                    socket.write("2-2\n"); //Wrong parent name
                                     return console.log("Wrong parent name");
                                 }
                                 Child.create({
-                                    username: packet.username,
-                                    password: packet.password,
-                                    email: packet.email,
-                                    parentName: packet.parentName,
-                                    count: 0
-                                },
-                                function(err, data) { // create variable
-                                    if (err) return console.log("Data error ", err);
-                                    socket.write("2-1\n" + data + "\n");//User registered
-                                    return console.log("User registered ", data);
-                                });
+                                        username: packet.username,
+                                        password: packet.password,
+                                        email: packet.email,
+                                        parentName: packet.parentName,
+                                    },
+                                    function(err, data) { // create variable
+                                        if (err) return console.log("Data error ", err);
+                                        socket.write("2-1\n" + data + "\n"); //User registered
+                                        return console.log("User registered ", data);
+                                    });
                             });
                         } else if (data) {
-                          socket.write("2-2\n" + data + "\n");//Already exist user
+                            socket.write("2-2\n" + data + "\n"); //Already exist user
                             return console.log("Already exist user :", data);
                         }
                     });
@@ -268,15 +241,14 @@ var server = net.createServer(function(socket) {
                                     username: packet.username,
                                     password: packet.password,
                                     email: packet.email,
-                                    count: 0
                                 },
                                 function(err, data) { // create variable
                                     if (err) return console.log("Data error ", err);
-                                    socket.write("2-1\n" + data + "\n");//User registered
+                                    socket.write("2-1\n" + data + "\n"); //User registered
                                     return console.log("User registered ", data);
                                 });
                         } else if (data) {
-                            socket.write("2-2\n" + data + "\n");//Already exist user
+                            socket.write("2-2\n" + data + "\n"); //Already exist user
                             return console.log("Already exist user :", data);
                         }
                     });
@@ -288,67 +260,39 @@ var server = net.createServer(function(socket) {
             ///////////////////////////////////////////////////////////////////////////
 
             if (packet.type == "list") {
-              getParentQuery(packet.username).exec(function(err, data) {
-                if (data.numOfChild !== 0) {
-                  socket.write(data.childs + "\n");
-                  return console.log(data.childs);
-                }
-                else {
-                  socket.write("There is not child\n");
-                  return console.log("There is not child");
-                }
-              });
+                getParentQuery(packet.username).exec(function(err, data) {
+                    if (data.childs.length > 0) {
+                        var rtn = "3-1";
+                        for (var i = 0; i < data.childs.length; i++)
+                            rtn = rtn + data.childs[i].username + "/"; //3-1name/name/name
+                        socket.write(rtn + '\n');
+                        console.log(rtn);
+                    }
+                    return;
+                });
             }
 
             if (packet.type == "insertChild") {
-              getParentQuery(packet.username).exec(function(err, data) {
-                console.log(data);
-                var num = data.numOfChild;
-                //data.childs[num] = {username:packet.childName, email:packet.childEmail};
-                data.numOfChild ++;
-                //data.save();
-                console.log(data);
-                socket.write(packet.childName + " pushed\n");
-                return console.log(packet.childName, " pushed");
-              });
-            }
-
-            ///////////////////////////////////////////////////////////////////////////
-
-            if (packet.type == "online") { // how are in online
-                var params = {};
-                var identifiers = [];
-
-                for (i = 0; i < clients.length; i++) {
-                    identifiers.push(clients[i].clientID);
-                }
-
-                params.type = "online";
-                params.clients = identifiers;
-                socket.write(JSON.stringify(params + '\n'));
-            }
-
-            if (packet.type == "message") {
-                var client = packet.sender;
-                var recipient = packet.recipient;
-
-                for (i = 0; i < clients.length; i++) {
-                    if (clients[i].clientID.toString() == recipient.toString()) {
-                        var params = {};
-
-                        params.type = "message";
-                        params.sender = packet.sender;
-                        params.recipient = packet.recipient;
-                        params.message = packet.message;
-
-                        clients[i].socket.write(JSON.stringify(params));
-
-                        console.log("Wrote message " + params.message + " from sender " + params.sender + " to recipient " + recipient);
-                        return;
+                Parent.update({
+                    username: packet.username
+                }, {
+                    $push: {
+                        "childs": {
+                            username: packet.childName,
+                            email: packet.childEmail
+                        }
                     }
-                }
-                console.log("Recipient was not valid");
+                }, {
+                    upsert: true
+                }, function(err) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log("Successfully added");
+                    }
+                });
             }
+            ///////////////////////////////////////////////////////////////////////////
         } catch (e) {
             console.log("Else " + e.message);
         }
