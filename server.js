@@ -1,9 +1,9 @@
 var net = require('net');
-
 var mongoose = require('mongoose');
+var HashMap = require('hashmap');
 
 //mongoose.connect("mongodb://hong:honghong@ds015962.mlab.com:15962/mobile");
-mongoose.connect(process.env.MONGO_DB);
+mongoose.connect(process.env.MONGO_DB); // encryption
 var db = mongoose.connection;
 db.once("open", function() {
     console.log("DB connected!");
@@ -97,9 +97,32 @@ for (var devName in interfaces) {
     }
 }, 1000);*/
 
+
 /////////////////////////////////////////////////
 // get db query //
 /////////////////////////////////////////////////
+
+// enrol child to parent
+function setChild(data) {
+  Parent.update({
+      username: data.parentName
+  }, {
+      $push: {
+          "childs": {
+              username: data.username,
+              email: data.email
+          }
+      }
+  }, {
+      safe: true, upsert: true, new : true
+  }, function(err) {
+      if (err) {
+          return console.log(err);
+      } else {
+          return console.log("Successfully added");
+      }
+  });
+}
 
 function getChildQuery(name) { // use for LOGIN child
     var query = Child.findOne({
@@ -115,14 +138,28 @@ function getParentQuery(name) { // use for LOGIN parent
     return query;
 }
 
+// Keep a pool of sockets ready for everyone
+// Avoid dead sockets by responding to the 'end' event
+//var sockets = [];
+var onUser;
+var map =  new HashMap();
+
 var server = net.createServer(function(socket) {
     console.log("#red[Client connected to the server with ip: " + socket.remoteAddress + "]");
+    //sockets.push(socket); // sockets / sockets.write('\n');
 
     socket.on("error", function(error) {
         console.log("error" + error);
     });
+    // Use splice to get rid of the socket that is ending. // client close
+    // The 'close' event means tcp client has disconnected.
     socket.on("close", function() {
-        console.log("#red[Client has disconnected]");
+
+        //var i = sockets.indexOf(socket);
+        //sockets.splice(i, 1);
+        //console.log('length : ', sockets.length, ' id : ', i);
+        map.remove(onUser);
+        console.log("#red[Client has disconnected" + socket.remoteAddress + "]");
     });
 
     socket.on("data", function(data) {
@@ -152,7 +189,6 @@ var server = net.createServer(function(socket) {
             }*/
 
             if (packet.type == "test") {
-
                 socket.write(packet.content + '\n');
                 return console.log(packet.content);
             }
@@ -167,9 +203,16 @@ var server = net.createServer(function(socket) {
                     if (data === null) {
                         socket.write("1-2\n"); //Wrong ID
                         return console.log("Wrong ID");
-                    } else if (packet.password == data.password) {
-                        socket.write("1-1\n"); //Login ok
-                        return console.log(data.username, " login");
+                    } else if (packet.password == data.password) { // login ok
+                        onUser = data.username;
+                        map.set(data.username, socket); // map.get(data.username)
+
+                        // Add the new client socket connection to the array of sockets // client on
+                        //sockets.push(socket); // sockets / sockets.write('\n');
+                        //console.log(sockets.length, " : ", packet.username);
+
+                        socket.write("1-1\n");
+                        return console.log("User ", data.username, " login");
                     } else {
                         socket.write("1-2\n"); //Wrong password
                         return console.log("Wrong password");
@@ -198,6 +241,7 @@ var server = net.createServer(function(socket) {
                                     },
                                     function(err, data) { // create variable
                                         if (err) return console.log("Data error ", err);
+                                        setChild(packet); // enrol child to parent
                                         socket.write("2-1\n" + data + "\n"); //User registered
                                         return console.log("User registered ", data);
                                     });
@@ -234,14 +278,14 @@ var server = net.createServer(function(socket) {
             ///////////////////////////////////////////////////////////////////////////
 
             ///////////////////////////////////////////////////////////////////////////
-            // LIST // INSERT CHILDS //
+            // GET LIST // INSERT CHILDS //
             ///////////////////////////////////////////////////////////////////////////
 
-            if (packet.type == "list") {
+            if (packet.type == "getList") {
                 getParentQuery(packet.username).exec(function(err, data) {
                     var rtn = "3-2";
                     if (data.childs.length > 0) { // childs exist
-                        rtn = "3-1";
+                        rtn = "3-1/";
                         for (var i = 0; i < data.childs.length; i++)
                             rtn = rtn + data.childs[i].username + "/"; //3-1name/name/name
                         socket.write(rtn + '\n');
@@ -251,7 +295,7 @@ var server = net.createServer(function(socket) {
                 });
             }
 
-            if (packet.type == "insertChild") {
+            /*if (packet.type == "insertChild") { /////////////////// 보류
                 Parent.update({
                     username: packet.username
                 }, {
@@ -265,16 +309,16 @@ var server = net.createServer(function(socket) {
                     safe: true, upsert: true, new : true
                 }, function(err) {
                     if (err) {
-                        console.log(err);
+                        return console.log(err);
                     } else {
-                        console.log("Successfully added");
                         socket.write('Successfully added\n');
+                        return console.log("Successfully added");
                     }
                 });
-            }
+            }*/
 
             ///////////////////////////////////////////////////////////////////////////
-            // LIST // INSERT CHILDS // END
+            // GET LIST // INSERT CHILDS // END
             ///////////////////////////////////////////////////////////////////////////
 
             ///////////////////////////////////////////////////////////////////////////
@@ -285,14 +329,14 @@ var server = net.createServer(function(socket) {
                 getChildQuery(packet.username).exec(function(err, data) {
                     if (err) return console.log("Data error ", err);
                     if (!data.location.length) {
-                      socket.write('getLocation error\n');
-                      return console.log('getLocation error');
+                      socket.write('4-2/getLocation error\n');
+                      return console.log('4-2/getLocation error');
                     }
                     var address = data.location.length - 1;
                     var lat = data.location[address].latitude;
                     var lng = data.location[address].longitude;
-                    console.log(data.username + '/' + lat + '/' + lng);
-                    socket.write(data.username + '/' + lat + '/' + lng + '\n'); // + query.createdAt
+                    socket.write('4-1/' + data.username + '/' + lat + '/' + lng + '\n'); // + query.createdAt
+                    return console.log('4-1/', data.username, '/', lat, '/', lng);
                 });
             }
 
@@ -310,16 +354,46 @@ var server = net.createServer(function(socket) {
                   safe: true, upsert: true, new : true
               }, function(err) {
                   if (err) {
-                      console.log(err);
+                      return console.log(err);
                   } else {
-                      console.log("Successfully added");
                       socket.write('Successfully added\n');
+                      return console.log("Successfully added");
                   }
               });
             }
 
             ///////////////////////////////////////////////////////////////////////////
             // GET CHILD LOCATION // SET CHILD LOCATION // END
+            ///////////////////////////////////////////////////////////////////////////
+
+            ///////////////////////////////////////////////////////////////////////////
+            // DANGER ZONE // TRACE //
+            ///////////////////////////////////////////////////////////////////////////
+
+            if (packet.type == "dangerZone") {
+                if (map.has(packet.childName)) {
+                    map.get(packet.childName).write("5-1/" + packet.lat + "/" + packet.lng + "/" + packet.radius + "\n");
+                } else {
+                    socket.write("Error : Child not active\n");
+                    return console.log("Error : Child not active");
+                }
+                //sockets.forEach(function(entry) {
+                //    if (entry.username == packet.username) {}
+                //});
+                //packet.lat packet.lng packet.childName packet.radius packet.isOn
+            }
+
+            if (packet.type == "getTrace") {
+                //db.posts.find( //query today up to tonight
+                //{"created_on": {"$gte": new Date(2012, 7, 14), "$lt": new Date(2012, 7, 15)}})
+                //month argument starts counting at 0, not 1. On the other hand, the days start counting at 1
+                //var date = new Date(dateStr);  // dateStr you get from mongodb
+                //var d = date.getDate();
+                //var m = date.getMonth()+1;
+            }
+
+            ///////////////////////////////////////////////////////////////////////////
+            // DANGER ZONE // TRACE // END
             ///////////////////////////////////////////////////////////////////////////
 
         } catch (e) {
