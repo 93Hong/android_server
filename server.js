@@ -1,6 +1,15 @@
 var net = require('net');
 var mongoose = require('mongoose');
 var HashMap = require('hashmap');
+var gcm = require('node-gcm');
+var fs = require('fs');
+var schedule = require('node-schedule');
+var moment = require('moment');
+
+var a = new Date();
+
+var today = moment().startOf('day'),
+    yesterday = moment(today).add(-1, 'days');
 
 //mongoose.connect("mongodb://hong:honghong@ds015962.mlab.com:15962/mobile");
 mongoose.connect(process.env.MONGO_DB); // encryption
@@ -30,6 +39,7 @@ var childSchema = mongoose.Schema({
     location: [{
         latitude: Number,
         longitude: Number,
+        speed: Number,
         createdAt: {
             type: Date,
             default: Date.now
@@ -42,6 +52,10 @@ var childSchema = mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    token: {
+        type: String,
+        required: true
     }
 });
 var Child = mongoose.model('child', childSchema);
@@ -67,9 +81,33 @@ var parentSchema = mongoose.Schema({
     childs: [{
         username: String,
         email: String
-    }]
+    }],
+    token: {
+        type: String,
+        required: true
+    }
 });
 var Parent = mongoose.model('parent', parentSchema);
+
+var j = schedule.scheduleJob({hour: 10, minute: 0}, function(){ //  remove data
+  Child.update({}, {
+      $pull: {
+          "location": {
+            createdAt: {
+              $lt: yesterday.toDate()
+            }
+          }
+      }
+  },  {
+      multi: true
+  }, function(err) {
+      if (err) {
+          return console.log(err);
+      } else {
+          return console.log("At 10 AM, clear childs location!!");
+      }
+  });
+});
 
 // show server ip address
 var interfaces = require('os').networkInterfaces();
@@ -97,6 +135,33 @@ for (var devName in interfaces) {
     }
 }, 1000);*/
 
+/////////////////////////////////////////////////
+// TOKEN AND GCM //
+/////////////////////////////////////////////////
+var server_api_key = 'AIzaSyAH_oXjEPf7L0km8jr876wXnfmsgimVBrQ';
+var sender = new gcm.Sender(server_api_key);
+var registrationIds = [];
+
+var message = new gcm.Message();
+
+var message = new gcm.Message({
+    collapseKey: 'demo',
+    delayWhileIdle: true,
+    timeToLive: 3,
+    data: {
+        title: 'saltfactory GCM demo',
+        message: 'Google Cloud Messaging',
+        desc: "설명입니다",
+        custom_key1: 'custom data1',
+        custom_key2: 'custom data2'
+    }
+});
+/*
+for (var i=0; i<push_ids.length; i++) { // 여러개보내기
+     registrationIds.push(push_ids[i]);
+}
+*/
+/////////////////////////////////////////////////
 
 /////////////////////////////////////////////////
 // get db query //
@@ -238,6 +303,7 @@ var server = net.createServer(function(socket) {
                                         password: packet.password,
                                         email: packet.email,
                                         parentName: packet.parentName,
+                                        token: packet.token
                                     },
                                     function(err, data) { // create variable
                                         if (err) return console.log("Data error ", err);
@@ -259,6 +325,7 @@ var server = net.createServer(function(socket) {
                                     username: packet.username,
                                     password: packet.password,
                                     email: packet.email,
+                                    token: packet.token
                                 },
                                 function(err, data) { // create variable
                                     if (err) return console.log("Data error ", err);
@@ -283,15 +350,20 @@ var server = net.createServer(function(socket) {
 
             if (packet.type == "getList") {
                 getParentQuery(packet.username).exec(function(err, data) {
-                    var rtn = "3-2";
+                    var rtn = "3-2", tmp = "token";
                     if (data.childs.length > 0) { // childs exist
                         rtn = "3-1/";
-                        for (var i = 0; i < data.childs.length; i++)
-                            rtn = rtn + data.childs[i].username + "/"; //3-1name/name/name
-                        socket.write(rtn + '\n');
+                        for (var i = 0; i < data.childs.length; i++) {
+                            rtn = rtn + data.childs[i].username + "/"; //3-1name/name/name/
+                            if (map.has(data.childs[i].username))
+                                tmp += "o";
+                            else
+                                tmp += "x";
+                        }
+                        socket.write(rtn + tmp + '\n'); //3-1name/name/name/oxo
                     } else // childs not exist
                         socket.write('3-2\n');
-                    return console.log(rtn);
+                    return console.log(rtn, tmp);
                 });
             }
 
@@ -322,7 +394,7 @@ var server = net.createServer(function(socket) {
             ///////////////////////////////////////////////////////////////////////////
 
             ///////////////////////////////////////////////////////////////////////////
-            // GET CHILD LOCATION // SET CHILD LOCATION //
+            // GET CHILD LOCATION // SET CHILD LOCATION // TRACE OF MOVEMENT //
             ///////////////////////////////////////////////////////////////////////////
 
             if (packet.type == "getLocation") {
@@ -332,11 +404,21 @@ var server = net.createServer(function(socket) {
                       socket.write('4-2/getLocation error\n');
                       return console.log('4-2/getLocation error');
                     }
+                    if (!map.has(packet.username)) {
+                      //var token = data.token;
+                      //'eylbdJ_KUCo:APA91bHDT7ix0mOjb6sWoKJE5d6p7LNZVWmh3ACyZV3xPK2hcD35GDIV95NcGzh5Qox7R4PZLZrLwa_tiiFJjaXdvzgmhjDTbqRidujgci2Z9vEGtzHWW8EkeHW9pVK0uJTc6R63UvKV';
+                      //registrationIds.push(token);
+
+                      //sender.send(message, registrationIds, 4, function (err, result) {
+                      //    console.log(result);
+                      //});
+                    }
                     var address = data.location.length - 1;
                     var lat = data.location[address].latitude;
                     var lng = data.location[address].longitude;
-                    socket.write('4-1/' + data.username + '/' + lat + '/' + lng + '\n'); // + query.createdAt
-                    return console.log('4-1/', data.username, '/', lat, '/', lng);
+                    var spd = data.location[address].speed;
+                    socket.write('4-1/' + data.username + '/' + lat + '/' + lng + '/' + spd + '\n'); // + query.createdAt
+                    return console.log('4-1/', data.username, '/', lat, '/', lng, '/', spd);
                 });
             }
 
@@ -347,7 +429,8 @@ var server = net.createServer(function(socket) {
                   $push: {
                       "location": {
                           latitude: packet.lat,
-                          longitude: packet.lng
+                          longitude: packet.lng,
+                          speed: packet.speed
                       }
                   }
               }, {
@@ -362,8 +445,12 @@ var server = net.createServer(function(socket) {
               });
             }
 
+            if (packet.type == "trace") {
+
+            }
+
             ///////////////////////////////////////////////////////////////////////////
-            // GET CHILD LOCATION // SET CHILD LOCATION // END
+            // GET CHILD LOCATION // SET CHILD LOCATION // TRACE OF MOVEMENT // END
             ///////////////////////////////////////////////////////////////////////////
 
             ///////////////////////////////////////////////////////////////////////////
@@ -384,6 +471,14 @@ var server = net.createServer(function(socket) {
             }
 
             if (packet.type == "getTrace") {
+                /*
+                First, in the Schema, you need to define the type of the date field to be:
+                {date: { type: Date, default: Date.now }}
+
+                then when u query for the date range:
+                Model.find({"date": {'$gte': new Date('3/1/2014'), '$lt': new Date('3/16/2014')}}, callback);
+                */
+
                 //db.posts.find( //query today up to tonight
                 //{"created_on": {"$gte": new Date(2012, 7, 14), "$lt": new Date(2012, 7, 15)}})
                 //month argument starts counting at 0, not 1. On the other hand, the days start counting at 1
@@ -401,6 +496,7 @@ var server = net.createServer(function(socket) {
         }
     });
 });
+
 server.listen(52273, function() {
     //'listening' listener
     console.log('Server is listening for incoming connections');
