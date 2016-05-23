@@ -21,6 +21,9 @@ db.on("error", function(err) {
     console.log("DB error : ", err);
 });
 
+/////////////////////////////////////////////////////////////
+// DB QUERY //
+/////////////////////////////////////////////////////////////
 var childSchema = mongoose.Schema({
     username: {
         type: String,
@@ -89,24 +92,28 @@ var parentSchema = mongoose.Schema({
 });
 var Parent = mongoose.model('parent', parentSchema);
 
-var j = schedule.scheduleJob({hour: 10, minute: 0}, function(){ //  remove data
-  Child.update({}, {
-      $pull: {
-          "location": {
-            createdAt: {
-              $lt: yesterday.toDate()
+//  remove all locaton updated before today at 10 AM
+var j = schedule.scheduleJob({
+    hour: 10,
+    minute: 0
+}, function() {
+    Child.update({}, {
+        $pull: {
+            "location": {
+                createdAt: {
+                    $lt: yesterday.toDate()
+                }
             }
-          }
-      }
-  },  {
-      multi: true
-  }, function(err) {
-      if (err) {
-          return console.log(err);
-      } else {
-          return console.log("At 10 AM, clear childs location!!");
-      }
-  });
+        }
+    }, {
+        multi: true
+    }, function(err) {
+        if (err) {
+            return console.log(err);
+        } else {
+            return console.log("At 10 AM, clear childs location!!");
+        }
+    });
 });
 
 // show server ip address
@@ -169,24 +176,26 @@ for (var i=0; i<push_ids.length; i++) { // 여러개보내기
 
 // enrol child to parent
 function setChild(data) {
-  Parent.update({
-      username: data.parentName
-  }, {
-      $push: {
-          "childs": {
-              username: data.username,
-              email: data.email
-          }
-      }
-  }, {
-      safe: true, upsert: true, new : true
-  }, function(err) {
-      if (err) {
-          return console.log(err);
-      } else {
-          return console.log("Successfully added");
-      }
-  });
+    Parent.update({
+        username: data.parentName
+    }, {
+        $push: {
+            "childs": {
+                username: data.username,
+                email: data.email
+            }
+        }
+    }, {
+        safe: true,
+        upsert: true,
+        new: true
+    }, function(err) {
+        if (err) {
+            return console.log(err);
+        } else {
+            return console.log("Successfully added");
+        }
+    });
 }
 
 function getChildQuery(name) { // use for LOGIN child
@@ -207,7 +216,7 @@ function getParentQuery(name) { // use for LOGIN parent
 // Avoid dead sockets by responding to the 'end' event
 //var sockets = [];
 var onUser;
-var map =  new HashMap();
+var map = new HashMap();
 
 var server = net.createServer(function(socket) {
     console.log("#red[Client connected to the server with ip: " + socket.remoteAddress + "]");
@@ -350,7 +359,8 @@ var server = net.createServer(function(socket) {
 
             if (packet.type == "getList") {
                 getParentQuery(packet.username).exec(function(err, data) {
-                    var rtn = "3-2", tmp = "token";
+                    var rtn = "3-2",
+                        tmp = "token";
                     if (data.childs.length > 0) { // childs exist
                         rtn = "3-1/";
                         for (var i = 0; i < data.childs.length; i++) {
@@ -401,17 +411,17 @@ var server = net.createServer(function(socket) {
                 getChildQuery(packet.username).exec(function(err, data) {
                     if (err) return console.log("Data error ", err);
                     if (!data.location.length) {
-                      socket.write('4-2/getLocation error\n');
-                      return console.log('4-2/getLocation error');
+                        socket.write('4-2/getLocation error\n');
+                        return console.log('4-2/getLocation error');
                     }
                     if (!map.has(packet.username)) {
-                      //var token = data.token;
-                      //'eylbdJ_KUCo:APA91bHDT7ix0mOjb6sWoKJE5d6p7LNZVWmh3ACyZV3xPK2hcD35GDIV95NcGzh5Qox7R4PZLZrLwa_tiiFJjaXdvzgmhjDTbqRidujgci2Z9vEGtzHWW8EkeHW9pVK0uJTc6R63UvKV';
-                      //registrationIds.push(token);
+                        //var token = data.token;
+                        //'eylbdJ_KUCo:APA91bHDT7ix0mOjb6sWoKJE5d6p7LNZVWmh3ACyZV3xPK2hcD35GDIV95NcGzh5Qox7R4PZLZrLwa_tiiFJjaXdvzgmhjDTbqRidujgci2Z9vEGtzHWW8EkeHW9pVK0uJTc6R63UvKV';
+                        //registrationIds.push(token);
 
-                      //sender.send(message, registrationIds, 4, function (err, result) {
-                      //    console.log(result);
-                      //});
+                        //sender.send(message, registrationIds, 4, function (err, result) {
+                        //    console.log(result);
+                        //});
                     }
                     var address = data.location.length - 1;
                     var lat = data.location[address].latitude;
@@ -423,26 +433,28 @@ var server = net.createServer(function(socket) {
             }
 
             if (packet.type == "setLocation") {
-              Child.update({
-                  username: packet.username
-              }, {
-                  $push: {
-                      "location": {
-                          latitude: packet.lat,
-                          longitude: packet.lng,
-                          speed: packet.speed
-                      }
-                  }
-              }, {
-                  safe: true, upsert: true, new : true
-              }, function(err) {
-                  if (err) {
-                      return console.log(err);
-                  } else {
-                      socket.write('Successfully added\n');
-                      return console.log("Successfully added");
-                  }
-              });
+                Child.update({
+                    username: packet.username
+                }, {
+                    $push: {
+                        "location": {
+                            latitude: packet.lat,
+                            longitude: packet.lng,
+                            speed: packet.speed
+                        }
+                    }
+                }, {
+                    safe: true,
+                    upsert: true,
+                    new: true
+                }, function(err) {
+                    if (err) {
+                        return console.log(err);
+                    } else {
+                        socket.write('Successfully added\n');
+                        return console.log("Successfully added");
+                    }
+                });
             }
 
             if (packet.type == "trace") {
