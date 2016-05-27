@@ -10,6 +10,14 @@ var a = new Date();
 
 var today = moment().startOf('day'),
     yesterday = moment(today).add(-1, 'days');
+    now = moment();
+
+    var hour = parseInt("1") * -1;
+    var to = moment(now).add(hour, 'hours');
+    console.log(to.toDate());
+    console.log(now.toDate());
+
+//console.log(now.format(), "     ", asd.format()); print moment
 
 //mongoose.connect("mongodb://hong:honghong@ds015962.mlab.com:15962/mobile");
 mongoose.connect(process.env.MONGO_DB); // encryption
@@ -457,10 +465,6 @@ var server = net.createServer(function(socket) {
                 });
             }
 
-            if (packet.type == "trace") {
-
-            }
-
             ///////////////////////////////////////////////////////////////////////////
             // GET CHILD LOCATION // SET CHILD LOCATION // TRACE OF MOVEMENT // END
             ///////////////////////////////////////////////////////////////////////////
@@ -483,20 +487,50 @@ var server = net.createServer(function(socket) {
             }
 
             if (packet.type == "getTrace") {
-                /*
-                First, in the Schema, you need to define the type of the date field to be:
-                {date: { type: Date, default: Date.now }}
 
-                then when u query for the date range:
-                Model.find({"date": {'$gte': new Date('3/1/2014'), '$lt': new Date('3/16/2014')}}, callback);
-                */
+                var hour = parseInt(packet.time) * -1;
+                var to = moment(now).add(hour, 'hours');
+                console.log(packet);
 
-                //db.posts.find( //query today up to tonight
-                //{"created_on": {"$gte": new Date(2012, 7, 14), "$lt": new Date(2012, 7, 15)}})
-                //month argument starts counting at 0, not 1. On the other hand, the days start counting at 1
-                //var date = new Date(dateStr);  // dateStr you get from mongodb
-                //var d = date.getDate();
-                //var m = date.getMonth()+1;
+                Child.find({
+                  username:packet.childName,
+                  "location.createdAt": {
+                        $gte: to.toDate()
+                     }
+                  }, function (err, data) {
+                    if (err) {
+                        socket.write("6-2\n");
+                        return console.log(err);
+                    }
+                    if (!data) {
+                        console.log("6-2 No data");
+                        return socket.write("6-2 No data\n");
+                    }
+                    var len = 0, i;
+                    var rtn = "6-1/";
+                    var arr = {};
+                    for (i = 0; i < data[0].location.length; i++)
+                      if (data[0].location[i].createdAt > to.toDate()) {
+                        arr[len] = data[0].location[i];
+                        len++;
+                        console.log(data[0].location[i].createdAt);
+                      }
+
+                    if (len < 11) {
+                        for (i = 0; i < len; i++) {
+                            rtn += arr[i].latitude + ':' + arr[i].longitude + '/';
+                            //rtn += data.location[i].latitude + ':' + data.location[i].longitude + '/';
+                        }
+                    }
+                    else {
+                        for (i = 0; i < 10; i++) {
+                            var incre = parseInt(len/10) * i;
+                            rtn += data.location[incre].latitude + ':' + data.location[incre].longitude + '/';
+                        }
+                    }
+                    socket.write(rtn + '\n');
+                    return console.log(rtn);
+                  });
             }
 
             ///////////////////////////////////////////////////////////////////////////
