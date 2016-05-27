@@ -1,0 +1,2591 @@
+[{
+    "subway": "두정",
+    "line": "1",
+    "xcoord": 36.833705,
+    "ycoord": 127.148960
+}, {
+    "subway": "천안",
+    "line": "1",
+    "xcoord": 36.810005,
+    "ycoord": 127.146826
+}, {
+    "subway": "인천",
+    "line": "1",
+    "xcoord": 37.476691,
+    "ycoord": 126.616936
+}, {
+    "subway": "서울",
+    "line": "1",
+    "xcoord": 37.554648,
+    "ycoord": 126.972559
+}, {
+    "subway": "시청",
+    "line": "1",
+    "xcoord": 37.564718,
+    "ycoord": 126.977108
+}, {
+    "subway": "종각",
+    "line": "1",
+    "xcoord": 37.570161,
+    "ycoord": 126.982923
+}, {
+    "subway": "종로3가",
+    "line": "1",
+    "xcoord": 37.571607,
+    "ycoord": 126.991806
+}, {
+    "subway": "종로5가",
+    "line": "1",
+    "xcoord": 37.570926,
+    "ycoord": 127.001849
+}, {
+    "subway": "동대문",
+    "line": "1",
+    "xcoord": 37.571420,
+    "ycoord": 127.009745
+}, {
+    "subway": "신설동",
+    "line": "1",
+    "xcoord": 37.575297,
+    "ycoord": 127.025087
+}, {
+    "subway": "제기동",
+    "line": "1",
+    "xcoord": 37.578103,
+    "ycoord": 127.034893
+}, {
+    "subway": "청량리",
+    "line": "1",
+    "xcoord": 37.580178,
+    "ycoord": 127.046835
+}, {
+    "subway": "동묘앞",
+    "line": "1",
+    "xcoord": 37.572627,
+    "ycoord": 127.016429
+}, {
+    "subway": "남영",
+    "line": "1",
+    "xcoord": 37.541021,
+    "ycoord": 126.971300
+}, {
+    "subway": "용산",
+    "line": "1",
+    "xcoord": 37.529849,
+    "ycoord": 126.964561
+}, {
+    "subway": "노량진",
+    "line": "1",
+    "xcoord": 37.514219,
+    "ycoord": 126.942454
+}, {
+    "subway": "대방",
+    "line": "1",
+    "xcoord": 37.513342,
+    "ycoord": 126.926382
+}, {
+    "subway": "영등포",
+    "line": "1",
+    "xcoord": 37.515504,
+    "ycoord": 126.907628
+}, {
+    "subway": "회기",
+    "line": "1",
+    "xcoord": 37.589460,
+    "ycoord": 127.057583
+}, {
+    "subway": "외대앞",
+    "line": "1",
+    "xcoord": 37.596073,
+    "ycoord": 127.063549
+}, {
+    "subway": "방학",
+    "line": "1",
+    "xcoord": 37.667503,
+    "ycoord": 127.044273
+}, {
+    "subway": "도봉",
+    "line": "1",
+    "xcoord": 37.679563,
+    "ycoord": 127.045595
+}, {
+    "subway": "도봉산",
+    "line": "1",
+    "xcoord": 37.689313,
+    "ycoord": 127.046222
+}, {
+    "subway": "회룡",
+    "line": "1",
+    "xcoord": 37.724846,
+    "ycoord": 127.046895
+}, {
+    "subway": "의정부",
+    "line": "1",
+    "xcoord": 37.738415,
+    "ycoord": 127.045958
+}, {
+    "subway": "가능",
+    "line": "1",
+    "xcoord": 37.748577,
+    "ycoord": 127.044213
+}, {
+    "subway": "녹양",
+    "line": "1",
+    "xcoord": 37.759380,
+    "ycoord": 127.042292
+}, {
+    "subway": "양주",
+    "line": "1",
+    "xcoord": 37.774381,
+    "ycoord": 127.044708
+}, {
+    "subway": "덕계",
+    "line": "1",
+    "xcoord": 37.818486,
+    "ycoord": 127.056486
+}, {
+    "subway": "덕정",
+    "line": "1",
+    "xcoord": 37.843188,
+    "ycoord": 127.061277
+}, {
+    "subway": "지행",
+    "line": "1",
+    "xcoord": 37.892334,
+    "ycoord": 127.055716
+}, {
+    "subway": "보산",
+    "line": "1",
+    "xcoord": 37.913702,
+    "ycoord": 127.057277
+}, {
+    "subway": "동두천",
+    "line": "1",
+    "xcoord": 37.927878,
+    "ycoord": 127.054790
+}, {
+    "subway": "소요산",
+    "line": "1",
+    "xcoord": 37.948100,
+    "ycoord": 127.061034
+}, {
+    "subway": "석계",
+    "line": "1",
+    "xcoord": 37.614805,
+    "ycoord": 127.065851
+}, {
+    "subway": "광운대",
+    "line": "1",
+    "xcoord": 37.623632,
+    "ycoord": 127.061835
+}, {
+    "subway": "월계",
+    "line": "1",
+    "xcoord": 37.633212,
+    "ycoord": 127.058831
+}, {
+    "subway": "녹천",
+    "line": "1",
+    "xcoord": 37.644799,
+    "ycoord": 127.051269
+}, {
+    "subway": "신길",
+    "line": "1",
+    "xcoord": 37.517122,
+    "ycoord": 126.917169
+}, {
+    "subway": "봉명",
+    "line": "1",
+    "xcoord": 36.801215,
+    "ycoord": 127.135763
+}, {
+    "subway": "쌍용(나사렛대)",
+    "line": "1",
+    "xcoord": 36.793759,
+    "ycoord": 127.121400
+}, {
+    "subway": "배방",
+    "line": "1",
+    "xcoord": 36.777629,
+    "ycoord": 127.052991
+}, {
+    "subway": "온양온천",
+    "line": "1",
+    "xcoord": 36.780483,
+    "ycoord": 127.003249
+}, {
+    "subway": "구로",
+    "line": "1",
+    "xcoord": 37.503039,
+    "ycoord": 126.881966
+}, {
+    "subway": "가산디지털단지",
+    "line": "1",
+    "xcoord": 37.481072,
+    "ycoord": 126.882343
+}, {
+    "subway": "금천구청",
+    "line": "1",
+    "xcoord": 37.455626,
+    "ycoord": 126.893980
+}, {
+    "subway": "석수",
+    "line": "1",
+    "xcoord": 37.435047,
+    "ycoord": 126.902295
+}, {
+    "subway": "안양",
+    "line": "1",
+    "xcoord": 37.401592,
+    "ycoord": 126.922874
+}, {
+    "subway": "명학",
+    "line": "1",
+    "xcoord": 37.384653,
+    "ycoord": 126.935433
+}, {
+    "subway": "군포",
+    "line": "1",
+    "xcoord": 37.353560,
+    "ycoord": 126.948462
+}, {
+    "subway": "의왕",
+    "line": "1",
+    "xcoord": 37.320852,
+    "ycoord": 126.948217
+}, {
+    "subway": "성균관대",
+    "line": "1",
+    "xcoord": 37.300349,
+    "ycoord": 126.970750
+}, {
+    "subway": "수원",
+    "line": "1",
+    "xcoord": 37.265974,
+    "ycoord": 126.999874
+}, {
+    "subway": "독산",
+    "line": "1",
+    "xcoord": 37.466613,
+    "ycoord": 126.889249
+}, {
+    "subway": "세류",
+    "line": "1",
+    "xcoord": 37.245025,
+    "ycoord": 127.013222
+}, {
+    "subway": "병점",
+    "line": "1",
+    "xcoord": 37.207503,
+    "ycoord": 127.032731
+}, {
+    "subway": "세마",
+    "line": "1",
+    "xcoord": 37.187533,
+    "ycoord": 127.043180
+}, {
+    "subway": "오산대",
+    "line": "1",
+    "xcoord": 37.168953,
+    "ycoord": 127.063197
+}, {
+    "subway": "오산",
+    "line": "1",
+    "xcoord": 37.145885,
+    "ycoord": 127.066720
+}, {
+    "subway": "진위",
+    "line": "1",
+    "xcoord": 37.109447,
+    "ycoord": 127.062278
+}, {
+    "subway": "송탄",
+    "line": "1",
+    "xcoord": 37.075696,
+    "ycoord": 127.054301
+}, {
+    "subway": "서정리",
+    "line": "1",
+    "xcoord": 37.056496,
+    "ycoord": 127.052819
+}, {
+    "subway": "지제",
+    "line": "1",
+    "xcoord": 37.018800,
+    "ycoord": 127.070444
+}, {
+    "subway": "평택",
+    "line": "1",
+    "xcoord": 36.990726,
+    "ycoord": 127.085159
+}, {
+    "subway": "성환",
+    "line": "1",
+    "xcoord": 36.916076,
+    "ycoord": 127.126964
+}, {
+    "subway": "직산",
+    "line": "1",
+    "xcoord": 36.870593,
+    "ycoord": 127.143904
+}, {
+    "subway": "당정",
+    "line": "1",
+    "xcoord": 37.344285,
+    "ycoord": 126.948345
+}, {
+    "subway": "서동탄",
+    "line": "1",
+    "xcoord": 37.195504,
+    "ycoord": 127.051672
+}, {
+    "subway": "광명",
+    "line": "1",
+    "xcoord": 37.416182,
+    "ycoord": 126.884466
+}, {
+    "subway": "개봉",
+    "line": "1",
+    "xcoord": 37.494594,
+    "ycoord": 126.858680
+}, {
+    "subway": "오류동",
+    "line": "1",
+    "xcoord": 37.494526,
+    "ycoord": 126.845365
+}, {
+    "subway": "역곡",
+    "line": "1",
+    "xcoord": 37.492159,
+    "ycoord": 126.823457
+}, {
+    "subway": "부천",
+    "line": "1",
+    "xcoord": 37.484050,
+    "ycoord": 126.782686
+}, {
+    "subway": "송내",
+    "line": "1",
+    "xcoord": 37.487600,
+    "ycoord": 126.753664
+}, {
+    "subway": "부평",
+    "line": "1",
+    "xcoord": 37.489493,
+    "ycoord": 126.724805
+}, {
+    "subway": "백운",
+    "line": "1",
+    "xcoord": 37.483664,
+    "ycoord": 126.707704
+}, {
+    "subway": "동암",
+    "line": "1",
+    "xcoord": 37.471408,
+    "ycoord": 126.702896
+}, {
+    "subway": "주안",
+    "line": "1",
+    "xcoord": 37.464941,
+    "ycoord": 126.679923
+}, {
+    "subway": "제물포",
+    "line": "1",
+    "xcoord": 37.466769,
+    "ycoord": 126.656666
+}, {
+    "subway": "동인천",
+    "line": "1",
+    "xcoord": 37.475276,
+    "ycoord": 126.632802
+}, {
+    "subway": "구일",
+    "line": "1",
+    "xcoord": 37.496756,
+    "ycoord": 126.870793
+}, {
+    "subway": "소사",
+    "line": "1",
+    "xcoord": 37.482753,
+    "ycoord": 126.795440
+}, {
+    "subway": "부개",
+    "line": "1",
+    "xcoord": 37.488418,
+    "ycoord": 126.741090
+}, {
+    "subway": "간석",
+    "line": "1",
+    "xcoord": 37.464737,
+    "ycoord": 126.694181
+}, {
+    "subway": "도원",
+    "line": "1",
+    "xcoord": 37.468446,
+    "ycoord": 126.642706
+}, {
+    "subway": "온수",
+    "line": "1",
+    "xcoord": 37.492159,
+    "ycoord": 126.823457
+}, {
+    "subway": "중동",
+    "line": "1",
+    "xcoord": 37.486562,
+    "ycoord": 126.764843
+}, {
+    "subway": "도화",
+    "line": "1",
+    "xcoord": 37.466070,
+    "ycoord": 126.668672
+}, {
+    "subway": "신이문",
+    "line": "1",
+    "xcoord": 37.601854,
+    "ycoord": 127.067325
+}, {
+    "subway": "아산",
+    "line": "1",
+    "xcoord": 36.792053,
+    "ycoord": 127.104361
+}, {
+    "subway": "신창",
+    "line": "1",
+    "xcoord": 36.769502,
+    "ycoord": 126.951108
+}, {
+    "subway": "관악",
+    "line": "1",
+    "xcoord": 37.419232,
+    "ycoord": 126.908706
+}, {
+    "subway": "화서",
+    "line": "1",
+    "xcoord": 37.283862,
+    "ycoord": 126.989627
+}, {
+    "subway": "망월사",
+    "line": "1",
+    "xcoord": 37.709914,
+    "ycoord": 127.047455
+}, {
+    "subway": "동두천중앙",
+    "line": "1",
+    "xcoord": 37.901885,
+    "ycoord": 127.056482
+}, {
+    "subway": "건대입구",
+    "line": "2",
+    "xcoord": 37.540693,
+    "ycoord": 127.070230
+}, {
+    "subway": "구의",
+    "line": "2",
+    "xcoord": 37.537077,
+    "ycoord": 127.085916
+}, {
+    "subway": "강변",
+    "line": "2",
+    "xcoord": 37.535095,
+    "ycoord": 127.094681
+}, {
+    "subway": "잠실나루",
+    "line": "2",
+    "xcoord": 37.520733,
+    "ycoord": 127.103790
+}, {
+    "subway": "잠실",
+    "line": "2",
+    "xcoord": 37.513950,
+    "ycoord": 127.102234
+}, {
+    "subway": "신천",
+    "line": "2",
+    "xcoord": 37.511687,
+    "ycoord": 127.086162
+}, {
+    "subway": "종합운동장",
+    "line": "2",
+    "xcoord": 37.510997,
+    "ycoord": 127.073642
+}, {
+    "subway": "삼성",
+    "line": "2",
+    "xcoord": 37.508844,
+    "ycoord": 127.063160
+}, {
+    "subway": "선릉",
+    "line": "2",
+    "xcoord": 37.504503,
+    "ycoord": 127.049008
+}, {
+    "subway": "역삼",
+    "line": "2",
+    "xcoord": 37.500622,
+    "ycoord": 127.036456
+}, {
+    "subway": "강남",
+    "line": "2",
+    "xcoord": 37.497175,
+    "ycoord": 127.027926
+}, {
+    "subway": "서초",
+    "line": "2",
+    "xcoord": 37.491897,
+    "ycoord": 127.007917
+}, {
+    "subway": "방배",
+    "line": "2",
+    "xcoord": 37.481426,
+    "ycoord": 126.997596
+}, {
+    "subway": "신촌",
+    "line": "2",
+    "xcoord": 37.555134,
+    "ycoord": 126.936893
+}, {
+    "subway": "이대",
+    "line": "2",
+    "xcoord": 37.556733,
+    "ycoord": 126.946013
+}, {
+    "subway": "아현",
+    "line": "2",
+    "xcoord": 37.557345,
+    "ycoord": 126.956141
+}, {
+    "subway": "충정로",
+    "line": "2",
+    "xcoord": 37.559973,
+    "ycoord": 126.963672
+}, {
+    "subway": "용답",
+    "line": "2",
+    "xcoord": 37.561904,
+    "ycoord": 127.050899
+}, {
+    "subway": "신답",
+    "line": "2",
+    "xcoord": 37.570040,
+    "ycoord": 127.046481
+}, {
+    "subway": "도림천",
+    "line": "2",
+    "xcoord": 37.514287,
+    "ycoord": 126.882768
+}, {
+    "subway": "양천구청",
+    "line": "2",
+    "xcoord": 37.512398,
+    "ycoord": 126.865819
+}, {
+    "subway": "신정네거리",
+    "line": "2",
+    "xcoord": 37.520074,
+    "ycoord": 126.852912
+}, {
+    "subway": "사당",
+    "line": "2",
+    "xcoord": 37.476530,
+    "ycoord": 126.981685
+}, {
+    "subway": "낙성대",
+    "line": "2",
+    "xcoord": 37.476930,
+    "ycoord": 126.963693
+}, {
+    "subway": "서울대입구",
+    "line": "2",
+    "xcoord": 37.481247,
+    "ycoord": 126.952739
+}, {
+    "subway": "봉천",
+    "line": "2",
+    "xcoord": 37.482362,
+    "ycoord": 126.941892
+}, {
+    "subway": "신림",
+    "line": "2",
+    "xcoord": 37.484201,
+    "ycoord": 126.929715
+}, {
+    "subway": "신대방",
+    "line": "2",
+    "xcoord": 37.487462,
+    "ycoord": 126.913149
+}, {
+    "subway": "구로디지털단지",
+    "line": "2",
+    "xcoord": 37.485266,
+    "ycoord": 126.901401
+}, {
+    "subway": "대림",
+    "line": "2",
+    "xcoord": 37.492970,
+    "ycoord": 126.895801
+}, {
+    "subway": "신도림",
+    "line": "2",
+    "xcoord": 37.508725,
+    "ycoord": 126.891295
+}, {
+    "subway": "문래",
+    "line": "2",
+    "xcoord": 37.517933,
+    "ycoord": 126.894760
+}, {
+    "subway": "영등포구청",
+    "line": "2",
+    "xcoord": 37.524970,
+    "ycoord": 126.895951
+}, {
+    "subway": "당산",
+    "line": "2",
+    "xcoord": 37.534380,
+    "ycoord": 126.902281
+}, {
+    "subway": "합정",
+    "line": "2",
+    "xcoord": 37.549463,
+    "ycoord": 126.913739
+}, {
+    "subway": "홍대입구",
+    "line": "2",
+    "xcoord": 37.557192,
+    "ycoord": 126.925381
+}, {
+    "subway": "을지로입구",
+    "line": "2",
+    "xcoord": 37.566014,
+    "ycoord": 126.982618
+}, {
+    "subway": "을지로4가",
+    "line": "2",
+    "xcoord": 37.566941,
+    "ycoord": 126.998079
+}, {
+    "subway": "동대문역사문화공원",
+    "line": "2",
+    "xcoord": 37.565138,
+    "ycoord": 127.007896
+}, {
+    "subway": "신당",
+    "line": "2",
+    "xcoord": 37.565972,
+    "ycoord": 127.017820
+}, {
+    "subway": "상왕십리",
+    "line": "2",
+    "xcoord": 37.564354,
+    "ycoord": 127.029354
+}, {
+    "subway": "왕십리",
+    "line": "2",
+    "xcoord": 37.561533,
+    "ycoord": 127.037732
+}, {
+    "subway": "한양대",
+    "line": "2",
+    "xcoord": 37.555273,
+    "ycoord": 127.043655
+}, {
+    "subway": "뚝섬",
+    "line": "2",
+    "xcoord": 37.547184,
+    "ycoord": 127.047367
+}, {
+    "subway": "성수",
+    "line": "2",
+    "xcoord": 37.544581,
+    "ycoord": 127.055961
+}, {
+    "subway": "용두",
+    "line": "2",
+    "xcoord": 37.574028,
+    "ycoord": 127.038091
+}, {
+    "subway": "을지로3가",
+    "line": "2",
+    "xcoord": 37.566295,
+    "ycoord": 126.991910
+}, {
+    "subway": "지축",
+    "line": "3",
+    "xcoord": 37.648048,
+    "ycoord": 126.913951
+}, {
+    "subway": "구파발",
+    "line": "3",
+    "xcoord": 37.636763,
+    "ycoord": 126.918821
+}, {
+    "subway": "연신내",
+    "line": "3",
+    "xcoord": 37.619001,
+    "ycoord": 126.921008
+}, {
+    "subway": "불광",
+    "line": "3",
+    "xcoord": 37.610469,
+    "ycoord": 126.929887
+}, {
+    "subway": "녹번",
+    "line": "3",
+    "xcoord": 37.600927,
+    "ycoord": 126.935756
+}, {
+    "subway": "홍제",
+    "line": "3",
+    "xcoord": 37.589066,
+    "ycoord": 126.943736
+}, {
+    "subway": "무악재",
+    "line": "3",
+    "xcoord": 37.582299,
+    "ycoord": 126.950291
+}, {
+    "subway": "독립문",
+    "line": "3",
+    "xcoord": 37.574571,
+    "ycoord": 126.957748
+}, {
+    "subway": "경복궁",
+    "line": "3",
+    "xcoord": 37.575762,
+    "ycoord": 126.973530
+}, {
+    "subway": "안국",
+    "line": "3",
+    "xcoord": 37.576477,
+    "ycoord": 126.985443
+}, {
+    "subway": "충무로",
+    "line": "3",
+    "xcoord": 37.561243,
+    "ycoord": 126.994280
+}, {
+    "subway": "동대입구",
+    "line": "3",
+    "xcoord": 37.559052,
+    "ycoord": 127.005602
+}, {
+    "subway": "약수",
+    "line": "3",
+    "xcoord": 37.554340,
+    "ycoord": 127.010655
+}, {
+    "subway": "금호",
+    "line": "3",
+    "xcoord": 37.548034,
+    "ycoord": 127.015872
+}, {
+    "subway": "옥수",
+    "line": "3",
+    "xcoord": 37.540685,
+    "ycoord": 127.017965
+}, {
+    "subway": "압구정",
+    "line": "3",
+    "xcoord": 37.527072,
+    "ycoord": 127.028461
+}, {
+    "subway": "신사",
+    "line": "3",
+    "xcoord": 37.516334,
+    "ycoord": 127.020114
+}, {
+    "subway": "잠원",
+    "line": "3",
+    "xcoord": 37.512759,
+    "ycoord": 127.011220
+}, {
+    "subway": "고속터미널",
+    "line": "3",
+    "xcoord": 37.504810,
+    "ycoord": 127.004943
+}, {
+    "subway": "교대",
+    "line": "3",
+    "xcoord": 37.493415,
+    "ycoord": 127.014080
+}, {
+    "subway": "남부터미널",
+    "line": "3",
+    "xcoord": 37.485013,
+    "ycoord": 127.016189
+}, {
+    "subway": "양재",
+    "line": "3",
+    "xcoord": 37.484147,
+    "ycoord": 127.034631
+}, {
+    "subway": "매봉",
+    "line": "3",
+    "xcoord": 37.486947,
+    "ycoord": 127.046769
+}, {
+    "subway": "도곡",
+    "line": "3",
+    "xcoord": 37.490858,
+    "ycoord": 127.055381
+}, {
+    "subway": "대치",
+    "line": "3",
+    "xcoord": 37.494612,
+    "ycoord": 127.063642
+}, {
+    "subway": "학여울",
+    "line": "3",
+    "xcoord": 37.496663,
+    "ycoord": 127.070594
+}, {
+    "subway": "대청",
+    "line": "3",
+    "xcoord": 37.493514,
+    "ycoord": 127.079532
+}, {
+    "subway": "일원",
+    "line": "3",
+    "xcoord": 37.483681,
+    "ycoord": 127.084390
+}, {
+    "subway": "수서",
+    "line": "3",
+    "xcoord": 37.487371,
+    "ycoord": 127.101880
+}, {
+    "subway": "경찰병원",
+    "line": "3",
+    "xcoord": 37.495918,
+    "ycoord": 127.124540
+}, {
+    "subway": "삼송",
+    "line": "3",
+    "xcoord": 37.653083,
+    "ycoord": 126.895558
+}, {
+    "subway": "원당",
+    "line": "3",
+    "xcoord": 37.653324,
+    "ycoord": 126.843041
+}, {
+    "subway": "화정",
+    "line": "3",
+    "xcoord": 37.634592,
+    "ycoord": 126.832650
+}, {
+    "subway": "대곡",
+    "line": "3",
+    "xcoord": 37.631626,
+    "ycoord": 126.811024
+}, {
+    "subway": "백석",
+    "line": "3",
+    "xcoord": 37.643114,
+    "ycoord": 126.787870
+}, {
+    "subway": "마두",
+    "line": "3",
+    "xcoord": 37.652206,
+    "ycoord": 126.777620
+}, {
+    "subway": "정발산",
+    "line": "3",
+    "xcoord": 37.659477,
+    "ycoord": 126.773359
+}, {
+    "subway": "주엽",
+    "line": "3",
+    "xcoord": 37.670072,
+    "ycoord": 126.761334
+}, {
+    "subway": "대화",
+    "line": "3",
+    "xcoord": 37.676087,
+    "ycoord": 126.747569
+}, {
+    "subway": "원흥",
+    "line": "3",
+    "xcoord": 37.650658,
+    "ycoord": 126.872642
+}, {
+    "subway": "월곶",
+    "line": "SU",
+    "xcoord": 37.391769,
+    "ycoord": 126.742699
+}, {
+    "subway": "소래포구",
+    "line": "SU",
+    "xcoord": 37.40095,
+    "ycoord": 126.733522
+}, {
+    "subway": "인천논현",
+    "line": "SU",
+    "xcoord": 37.400614,
+    "ycoord": 126.722478
+}, {
+    "subway": "남동인더스파크",
+    "line": "SU",
+    "xcoord": 37.407722,
+    "ycoord": 126.695216
+}, {
+    "subway": "연수",
+    "line": "SU",
+    "xcoord": 37.417804,
+    "ycoord": 126.67894
+}, {
+    "subway": "호구포",
+    "line": "SU",
+    "xcoord": 37.401637,
+    "ycoord": 126.708627
+}, {
+    "subway": "송도",
+    "line": "SU",
+    "xcoord": 37.428514,
+    "ycoord": 126.657772
+}, {
+    "subway": "인하대",
+    "line": "SU",
+    "xcoord": 37.448493,
+    "ycoord": 126.649619
+}, {
+    "subway": "숭의",
+    "line": "SU",
+    "xcoord": 37.460789,
+    "ycoord": 126.638297
+}, {
+    "subway": "신포",
+    "line": "SU",
+    "xcoord": 37.46874,
+    "ycoord": 126.623853
+}, {
+    "subway": "달월",
+    "line": "SU",
+    "xcoord": 37.379681,
+    "ycoord": 126.745177
+}, {
+    "subway": "동천",
+    "line": "S",
+    "xcoord": 37.337928,
+    "ycoord": 127.102976
+}, {
+    "subway": "수지구청",
+    "line": "S",
+    "xcoord": 37.322702,
+    "ycoord": 127.095026
+}, {
+    "subway": "성복",
+    "line": "S",
+    "xcoord": 37.313335,
+    "ycoord": 127.0801
+}, {
+    "subway": "상현",
+    "line": "S",
+    "xcoord": 37.297664,
+    "ycoord": 127.069342
+}, {
+    "subway": "광교중앙",
+    "line": "S",
+    "xcoord": 37.288617,
+    "ycoord": 127.051478
+}, {
+    "subway": "광교",
+    "line": "S",
+    "xcoord": 37.30211,
+    "ycoord": 127.044483
+}, {
+    "subway": "양재시민의숲",
+    "line": "S",
+    "xcoord": 37.470023,
+    "ycoord": 127.03842
+}, {
+    "subway": "청계산입구",
+    "line": "S",
+    "xcoord": 37.447211,
+    "ycoord": 127.055664
+}, {
+    "subway": "판교",
+    "line": "S",
+    "xcoord": 37.394761,
+    "ycoord": 127.111217
+}, {
+    "subway": "갈매",
+    "line": "G",
+    "xcoord": 37.634118,
+    "ycoord": 127.114757
+}, {
+    "subway": "별내",
+    "line": "G",
+    "xcoord": 37.64202,
+    "ycoord": 127.12684
+}, {
+    "subway": "사릉",
+    "line": "G",
+    "xcoord": 37.65108,
+    "ycoord": 127.176933
+}, {
+    "subway": "금곡",
+    "line": "G",
+    "xcoord": 37.637382,
+    "ycoord": 127.207853
+}, {
+    "subway": "평내호평",
+    "line": "G",
+    "xcoord": 37.653225,
+    "ycoord": 127.244493
+}, {
+    "subway": "마석",
+    "line": "G",
+    "xcoord": 37.652782,
+    "ycoord": 127.311767
+}, {
+    "subway": "대성리",
+    "line": "G",
+    "xcoord": 37.684071,
+    "ycoord": 127.379319
+}, {
+    "subway": "청평",
+    "line": "G",
+    "xcoord": 37.735488,
+    "ycoord": 127.42661
+}, {
+    "subway": "가평",
+    "line": "G",
+    "xcoord": 37.814536,
+    "ycoord": 127.510739
+}, {
+    "subway": "굴봉산",
+    "line": "G",
+    "xcoord": 37.832067,
+    "ycoord": 127.557695
+}, {
+    "subway": "강촌",
+    "line": "G",
+    "xcoord": 37.805723,
+    "ycoord": 127.634146
+}, {
+    "subway": "김유정",
+    "line": "G",
+    "xcoord": 37.818466,
+    "ycoord": 127.71434
+}, {
+    "subway": "남춘천",
+    "line": "G",
+    "xcoord": 37.864007,
+    "ycoord": 127.723792
+}, {
+    "subway": "신내",
+    "line": "G",
+    "xcoord": 37.612887,
+    "ycoord": 127.103218
+}, {
+    "subway": "퇴계원",
+    "line": "G",
+    "xcoord": 37.648311,
+    "ycoord": 127.143952
+}, {
+    "subway": "천마산",
+    "line": "G",
+    "xcoord": 37.658978,
+    "ycoord": 127.285379
+}, {
+    "subway": "상천",
+    "line": "G",
+    "xcoord": 37.770246,
+    "ycoord": 127.454821
+}, {
+    "subway": "백양리",
+    "line": "G",
+    "xcoord": 37.830779,
+    "ycoord": 127.58933
+}, {
+    "subway": "춘천",
+    "line": "G",
+    "xcoord": 37.885054,
+    "ycoord": 127.717023
+}, {
+    "subway": "청라국제도시",
+    "line": "A",
+    "xcoord": 37.555878,
+    "ycoord": 126.625327
+}, {
+    "subway": "검암",
+    "line": "A",
+    "xcoord": 37.569104,
+    "ycoord": 126.673728
+}, {
+    "subway": "운서",
+    "line": "A",
+    "xcoord": 37.492904,
+    "ycoord": 126.49379
+}, {
+    "subway": "공항화물청사",
+    "line": "A",
+    "xcoord": 37.458366,
+    "ycoord": 126.476241
+}, {
+    "subway": "인천국제공항",
+    "line": "A",
+    "xcoord": 37.447464,
+    "ycoord": 126.452508
+}, {
+    "subway": "영종",
+    "line": "A",
+    "xcoord": 37.511466,
+    "ycoord": 126.5237
+}, {
+    "subway": "오리",
+    "line": "B",
+    "xcoord": 37.339824,
+    "ycoord": 127.108942
+}, {
+    "subway": "압구정로데오",
+    "line": "B",
+    "xcoord": 37.527381,
+    "ycoord": 127.040534
+}, {
+    "subway": "선정릉",
+    "line": "B",
+    "xcoord": 37.51098,
+    "ycoord": 127.043593
+}, {
+    "subway": "가천대",
+    "line": "B",
+    "xcoord": 37.448605,
+    "ycoord": 127.126697
+}, {
+    "subway": "태평",
+    "line": "B",
+    "xcoord": 37.440019,
+    "ycoord": 127.127709
+}, {
+    "subway": "모란",
+    "line": "B",
+    "xcoord": 37.43213,
+    "ycoord": 127.129087
+}, {
+    "subway": "야탑",
+    "line": "B",
+    "xcoord": 37.411185,
+    "ycoord": 127.128715
+}, {
+    "subway": "서현",
+    "line": "B",
+    "xcoord": 37.385126,
+    "ycoord": 127.123592
+}, {
+    "subway": "수내",
+    "line": "B",
+    "xcoord": 37.378455,
+    "ycoord": 127.114322
+}, {
+    "subway": "정자",
+    "line": "B",
+    "xcoord": 37.36706,
+    "ycoord": 127.108105
+}, {
+    "subway": "미금",
+    "line": "B",
+    "xcoord": 37.350077,
+    "ycoord": 127.10891
+}, {
+    "subway": "이매",
+    "line": "B",
+    "xcoord": 37.396104,
+    "ycoord": 127.12827
+}, {
+    "subway": "보정",
+    "line": "B",
+    "xcoord": 37.312752,
+    "ycoord": 127.108196
+}, {
+    "subway": "죽전",
+    "line": "B",
+    "xcoord": 37.324753,
+    "ycoord": 127.107395
+}, {
+    "subway": "신갈",
+    "line": "B",
+    "xcoord": 37.286102,
+    "ycoord": 127.111313
+}, {
+    "subway": "기흥",
+    "line": "B",
+    "xcoord": 37.275619,
+    "ycoord": 127.115936
+}, {
+    "subway": "청명",
+    "line": "B",
+    "xcoord": 37.259489,
+    "ycoord": 127.078934
+}, {
+    "subway": "영통",
+    "line": "B",
+    "xcoord": 37.251568,
+    "ycoord": 127.071394
+}, {
+    "subway": "매탄권선",
+    "line": "B",
+    "xcoord": 37.252759,
+    "ycoord": 127.040566
+}, {
+    "subway": "수원시청",
+    "line": "B",
+    "xcoord": 37.261911,
+    "ycoord": 127.030736
+}, {
+    "subway": "한티",
+    "line": "B",
+    "xcoord": 37.496237,
+    "ycoord": 127.052873
+}, {
+    "subway": "구룡",
+    "line": "B",
+    "xcoord": 37.486839,
+    "ycoord": 127.058856
+}, {
+    "subway": "개포동",
+    "line": "B",
+    "xcoord": 37.489116,
+    "ycoord": 127.06614
+}, {
+    "subway": "대모산입구",
+    "line": "B",
+    "xcoord": 37.491373,
+    "ycoord": 127.07272
+}, {
+    "subway": "복정",
+    "line": "B",
+    "xcoord": 37.470047,
+    "ycoord": 127.126662
+}, {
+    "subway": "서울숲",
+    "line": "B",
+    "xcoord": 37.543617,
+    "ycoord": 127.044707
+}, {
+    "subway": "구성",
+    "line": "B",
+    "xcoord": 37.298969,
+    "ycoord": 127.105664
+}, {
+    "subway": "상갈",
+    "line": "B",
+    "xcoord": 37.26181,
+    "ycoord": 127.108847
+}, {
+    "subway": "망포",
+    "line": "B",
+    "xcoord": 37.245795,
+    "ycoord": 127.057353
+}, {
+    "subway": "매교",
+    "line": "B",
+    "xcoord": 37.265481,
+    "ycoord": 127.015678
+}, {
+    "subway": "서빙고",
+    "line": "K",
+    "xcoord": 37.519594,
+    "ycoord": 126.988537
+}, {
+    "subway": "한남",
+    "line": "K",
+    "xcoord": 37.52943,
+    "ycoord": 127.009169
+}, {
+    "subway": "응봉",
+    "line": "K",
+    "xcoord": 37.549946,
+    "ycoord": 127.034538
+}, {
+    "subway": "중랑",
+    "line": "K",
+    "xcoord": 37.594917,
+    "ycoord": 127.076116
+}, {
+    "subway": "망우",
+    "line": "K",
+    "xcoord": 37.59955,
+    "ycoord": 127.091909
+}, {
+    "subway": "양원",
+    "line": "K",
+    "xcoord": 37.606596,
+    "ycoord": 127.107906
+}, {
+    "subway": "구리",
+    "line": "K",
+    "xcoord": 37.603392,
+    "ycoord": 127.143869
+}, {
+    "subway": "도농",
+    "line": "K",
+    "xcoord": 37.608806,
+    "ycoord": 127.161153
+}, {
+    "subway": "양정",
+    "line": "K",
+    "xcoord": 37.60533,
+    "ycoord": 127.19364
+}, {
+    "subway": "덕소",
+    "line": "K",
+    "xcoord": 37.586781,
+    "ycoord": 127.208832
+}, {
+    "subway": "도심",
+    "line": "K",
+    "xcoord": 37.579622,
+    "ycoord": 127.222672
+}, {
+    "subway": "팔당",
+    "line": "K",
+    "xcoord": 37.547371,
+    "ycoord": 127.243939
+}, {
+    "subway": "운길산",
+    "line": "K",
+    "xcoord": 37.554669,
+    "ycoord": 127.310115
+}, {
+    "subway": "양수",
+    "line": "K",
+    "xcoord": 37.545981,
+    "ycoord": 127.329098
+}, {
+    "subway": "신원",
+    "line": "K",
+    "xcoord": 37.525545,
+    "ycoord": 127.372921
+}, {
+    "subway": "국수",
+    "line": "K",
+    "xcoord": 37.516169,
+    "ycoord": 127.399367
+}, {
+    "subway": "아신",
+    "line": "K",
+    "xcoord": 37.51382,
+    "ycoord": 127.443173
+}, {
+    "subway": "오빈",
+    "line": "K",
+    "xcoord": 37.506062,
+    "ycoord": 127.473868
+}, {
+    "subway": "양평(경의중앙선)",
+    "line": "K",
+    "xcoord": 37.492832,
+    "ycoord": 127.491814
+}, {
+    "subway": "원덕",
+    "line": "K",
+    "xcoord": 37.468672,
+    "ycoord": 127.547076
+}, {
+    "subway": "용문",
+    "line": "K",
+    "xcoord": 37.48223,
+    "ycoord": 127.594647
+}, {
+    "subway": "서울(경의중앙선)",
+    "line": "K",
+    "xcoord": 37.556328,
+    "ycoord": 126.969522
+}, {
+    "subway": "신촌(경의중앙선)",
+    "line": "K",
+    "xcoord": 37.559783,
+    "ycoord": 126.942319
+}, {
+    "subway": "서강대",
+    "line": "K",
+    "xcoord": 37.551881,
+    "ycoord": 126.935711
+}, {
+    "subway": "가좌",
+    "line": "K",
+    "xcoord": 37.568491,
+    "ycoord": 126.915487
+}, {
+    "subway": "수색",
+    "line": "K",
+    "xcoord": 37.580842,
+    "ycoord": 126.895611
+}, {
+    "subway": "화전",
+    "line": "K",
+    "xcoord": 37.602888,
+    "ycoord": 126.868387
+}, {
+    "subway": "행신",
+    "line": "K",
+    "xcoord": 37.612102,
+    "ycoord": 126.834146
+}, {
+    "subway": "능곡",
+    "line": "K",
+    "xcoord": 37.618808,
+    "ycoord": 126.820783
+}, {
+    "subway": "곡산",
+    "line": "K",
+    "xcoord": 37.645676,
+    "ycoord": 126.801762
+}, {
+    "subway": "백마",
+    "line": "K",
+    "xcoord": 37.658239,
+    "ycoord": 126.794461
+}, {
+    "subway": "풍산",
+    "line": "K",
+    "xcoord": 37.672346,
+    "ycoord": 126.786243
+}, {
+    "subway": "일산",
+    "line": "K",
+    "xcoord": 37.682077,
+    "ycoord": 126.769846
+}, {
+    "subway": "운정",
+    "line": "K",
+    "xcoord": 37.725826,
+    "ycoord": 126.767257
+}, {
+    "subway": "금릉",
+    "line": "K",
+    "xcoord": 37.751322,
+    "ycoord": 126.765347
+}, {
+    "subway": "월롱",
+    "line": "K",
+    "xcoord": 37.796188,
+    "ycoord": 126.792587
+}, {
+    "subway": "파주",
+    "line": "K",
+    "xcoord": 37.815298,
+    "ycoord": 126.792783
+}, {
+    "subway": "문산",
+    "line": "K",
+    "xcoord": 37.854619,
+    "ycoord": 126.788047
+}, {
+    "subway": "탄현",
+    "line": "K",
+    "xcoord": 37.694023,
+    "ycoord": 126.761086
+}, {
+    "subway": "금촌",
+    "line": "K",
+    "xcoord": 37.766217,
+    "ycoord": 126.774644
+}, {
+    "subway": "야당",
+    "line": "K",
+    "xcoord": 37.712327,
+    "ycoord": 126.761356
+}, {
+    "subway": "강매",
+    "line": "K",
+    "xcoord": 37.612314,
+    "ycoord": 126.843223
+}, {
+    "subway": "귤현",
+    "line": "I",
+    "xcoord": 37.566379,
+    "ycoord": 126.742654
+}, {
+    "subway": "박촌",
+    "line": "I",
+    "xcoord": 37.553703,
+    "ycoord": 126.745077
+}, {
+    "subway": "계산",
+    "line": "I",
+    "xcoord": 37.543238,
+    "ycoord": 126.728128
+}, {
+    "subway": "경인교대입구",
+    "line": "I",
+    "xcoord": 37.538157,
+    "ycoord": 126.722597
+}, {
+    "subway": "부평구청",
+    "line": "I",
+    "xcoord": 37.508336,
+    "ycoord": 126.720548
+}, {
+    "subway": "간석오거리",
+    "line": "I",
+    "xcoord": 37.467048,
+    "ycoord": 126.707938
+}, {
+    "subway": "문학경기장",
+    "line": "I",
+    "xcoord": 37.434935,
+    "ycoord": 126.698579
+}, {
+    "subway": "신연수",
+    "line": "I",
+    "xcoord": 37.41804,
+    "ycoord": 126.693863
+}, {
+    "subway": "원인재",
+    "line": "I",
+    "xcoord": 37.412603,
+    "ycoord": 126.687389
+}, {
+    "subway": "캠퍼스타운",
+    "line": "I",
+    "xcoord": 37.387855,
+    "ycoord": 126.661673
+}, {
+    "subway": "테크노파크",
+    "line": "I",
+    "xcoord": 37.382268,
+    "ycoord": 126.656365
+}, {
+    "subway": "인천대입구",
+    "line": "I",
+    "xcoord": 37.386007,
+    "ycoord": 126.639484
+}, {
+    "subway": "국제업무지구",
+    "line": "I",
+    "xcoord": 37.399907,
+    "ycoord": 126.630347
+}, {
+    "subway": "계양",
+    "line": "I",
+    "xcoord": 37.571462,
+    "ycoord": 126.735637
+}, {
+    "subway": "임학",
+    "line": "I",
+    "xcoord": 37.545059,
+    "ycoord": 126.738665
+}, {
+    "subway": "작전",
+    "line": "I",
+    "xcoord": 37.530415,
+    "ycoord": 126.722527
+}, {
+    "subway": "부평시장",
+    "line": "I",
+    "xcoord": 37.498383,
+    "ycoord": 126.722244
+}, {
+    "subway": "동수",
+    "line": "I",
+    "xcoord": 37.485312,
+    "ycoord": 126.718247
+}, {
+    "subway": "부평삼거리",
+    "line": "I",
+    "xcoord": 37.477679,
+    "ycoord": 126.710208
+}, {
+    "subway": "인천시청",
+    "line": "I",
+    "xcoord": 37.457405,
+    "ycoord": 126.702221
+}, {
+    "subway": "예술회관",
+    "line": "I",
+    "xcoord": 37.449396,
+    "ycoord": 126.701012
+}, {
+    "subway": "인천터미널",
+    "line": "I",
+    "xcoord": 37.442383,
+    "ycoord": 126.699706
+}, {
+    "subway": "선학",
+    "line": "I",
+    "xcoord": 37.426684,
+    "ycoord": 126.698863
+}, {
+    "subway": "동춘",
+    "line": "I",
+    "xcoord": 37.404737,
+    "ycoord": 126.681015
+}, {
+    "subway": "동막",
+    "line": "I",
+    "xcoord": 37.397878,
+    "ycoord": 126.674005
+}, {
+    "subway": "지식정보단지",
+    "line": "I",
+    "xcoord": 37.378384,
+    "ycoord": 126.645168
+}, {
+    "subway": "센트럴파크",
+    "line": "I",
+    "xcoord": 37.393054,
+    "ycoord": 126.634729
+}, {
+    "subway": "갈산",
+    "line": "I",
+    "xcoord": 37.517268,
+    "ycoord": 126.721514
+}, {
+    "subway": "개화",
+    "line": "9",
+    "xcoord": 37.578608,
+    "ycoord": 126.798153
+}, {
+    "subway": "공항시장",
+    "line": "9",
+    "xcoord": 37.563726,
+    "ycoord": 126.810678
+}, {
+    "subway": "신방화",
+    "line": "9",
+    "xcoord": 37.567532,
+    "ycoord": 126.816601
+}, {
+    "subway": "양천향교",
+    "line": "9",
+    "xcoord": 37.568381,
+    "ycoord": 126.841333
+}, {
+    "subway": "가양",
+    "line": "9",
+    "xcoord": 37.561391,
+    "ycoord": 126.854456
+}, {
+    "subway": "증미",
+    "line": "9",
+    "xcoord": 37.557402,
+    "ycoord": 126.861939
+}, {
+    "subway": "염창",
+    "line": "9",
+    "xcoord": 37.546936,
+    "ycoord": 126.874916
+}, {
+    "subway": "신목동",
+    "line": "9",
+    "xcoord": 37.544277,
+    "ycoord": 126.88308
+}, {
+    "subway": "선유도",
+    "line": "9",
+    "xcoord": 37.53802,
+    "ycoord": 126.893525
+}, {
+    "subway": "샛강",
+    "line": "9",
+    "xcoord": 37.517274,
+    "ycoord": 126.928422
+}, {
+    "subway": "언주",
+    "line": "9",
+    "xcoord": 37.507287,
+    "ycoord": 127.033868
+}, {
+    "subway": "삼성중앙",
+    "line": "9",
+    "xcoord": 37.513011,
+    "ycoord": 127.053282
+}, {
+    "subway": "봉은사",
+    "line": "9",
+    "xcoord": 37.514219,
+    "ycoord": 127.060245
+}, {
+    "subway": "마곡나루",
+    "line": "9",
+    "xcoord": 37.567336,
+    "ycoord": 126.829497
+}, {
+    "subway": "등촌",
+    "line": "9",
+    "xcoord": 37.550632,
+    "ycoord": 126.865689
+}, {
+    "subway": "국회의사당",
+    "line": "9",
+    "xcoord": 37.528105,
+    "ycoord": 126.917874
+}, {
+    "subway": "노량진",
+    "line": "9",
+    "xcoord": 37.513551,
+    "ycoord": 126.94097
+}, {
+    "subway": "노들",
+    "line": "9",
+    "xcoord": 37.512887,
+    "ycoord": 126.953222
+}, {
+    "subway": "흑석",
+    "line": "9",
+    "xcoord": 37.50877,
+    "ycoord": 126.963708
+}, {
+    "subway": "구반포",
+    "line": "9",
+    "xcoord": 37.501364,
+    "ycoord": 126.987332
+}, {
+    "subway": "신반포",
+    "line": "9",
+    "xcoord": 37.503415,
+    "ycoord": 126.995925
+}, {
+    "subway": "사평",
+    "line": "9",
+    "xcoord": 37.504206,
+    "ycoord": 127.015259
+}, {
+    "subway": "신논현",
+    "line": "9",
+    "xcoord": 37.504598,
+    "ycoord": 127.02506
+}, {
+    "subway": "신흥",
+    "line": "8",
+    "xcoord": 37.440918,
+    "ycoord": 127.147564
+}, {
+    "subway": "수진",
+    "line": "8",
+    "xcoord": 37.437428,
+    "ycoord": 127.140722
+}, {
+    "subway": "강동구청",
+    "line": "8",
+    "xcoord": 37.530341,
+    "ycoord": 127.120508
+}, {
+    "subway": "몽촌토성",
+    "line": "8",
+    "xcoord": 37.517409,
+    "ycoord": 127.112359
+}, {
+    "subway": "석촌",
+    "line": "8",
+    "xcoord": 37.505431,
+    "ycoord": 127.106979
+}, {
+    "subway": "송파",
+    "line": "8",
+    "xcoord": 37.499703,
+    "ycoord": 127.112183
+}, {
+    "subway": "가락시장",
+    "line": "8",
+    "xcoord": 37.492522,
+    "ycoord": 127.118234
+}, {
+    "subway": "문정",
+    "line": "8",
+    "xcoord": 37.485855,
+    "ycoord": 127.1225
+}, {
+    "subway": "장지",
+    "line": "8",
+    "xcoord": 37.478703,
+    "ycoord": 127.126191
+}, {
+    "subway": "남한산성입구",
+    "line": "8",
+    "xcoord": 37.451535,
+    "ycoord": 127.159816
+}, {
+    "subway": "암사",
+    "line": "8",
+    "xcoord": 37.55021,
+    "ycoord": 127.127562
+}, {
+    "subway": "단대오거리",
+    "line": "8",
+    "xcoord": 37.44521,
+    "ycoord": 127.156866
+}, {
+    "subway": "산성",
+    "line": "8",
+    "xcoord": 37.457122,
+    "ycoord": 127.149908
+}, {
+    "subway": "장암",
+    "line": "7",
+    "xcoord": 37.700109,
+    "ycoord": 127.053196
+}, {
+    "subway": "수락산",
+    "line": "7",
+    "xcoord": 37.67785,
+    "ycoord": 127.055315
+}, {
+    "subway": "마들",
+    "line": "7",
+    "xcoord": 37.66494,
+    "ycoord": 127.057675
+}, {
+    "subway": "중계",
+    "line": "7",
+    "xcoord": 37.644583,
+    "ycoord": 127.064303
+}, {
+    "subway": "하계",
+    "line": "7",
+    "xcoord": 37.636352,
+    "ycoord": 127.06799
+}, {
+    "subway": "공릉",
+    "line": "7",
+    "xcoord": 37.625742,
+    "ycoord": 127.072896
+}, {
+    "subway": "먹골",
+    "line": "7",
+    "xcoord": 37.610637,
+    "ycoord": 127.077725
+}, {
+    "subway": "중화",
+    "line": "7",
+    "xcoord": 37.602545,
+    "ycoord": 127.079264
+}, {
+    "subway": "상봉",
+    "line": "7",
+    "xcoord": 37.596362,
+    "ycoord": 127.085032
+}, {
+    "subway": "면목",
+    "line": "7",
+    "xcoord": 37.588579,
+    "ycoord": 127.087503
+}, {
+    "subway": "사가정",
+    "line": "7",
+    "xcoord": 37.580894,
+    "ycoord": 127.088478
+}, {
+    "subway": "용마산",
+    "line": "7",
+    "xcoord": 37.573647,
+    "ycoord": 127.086727
+}, {
+    "subway": "중곡",
+    "line": "7",
+    "xcoord": 37.565923,
+    "ycoord": 127.08432
+}, {
+    "subway": "어린이대공원",
+    "line": "7",
+    "xcoord": 37.548014,
+    "ycoord": 127.074658
+}, {
+    "subway": "뚝섬유원지",
+    "line": "7",
+    "xcoord": 37.53154,
+    "ycoord": 127.066704
+}, {
+    "subway": "청담",
+    "line": "7",
+    "xcoord": 37.519365,
+    "ycoord": 127.05335
+}, {
+    "subway": "강남구청",
+    "line": "7",
+    "xcoord": 37.517186,
+    "ycoord": 127.04128
+}, {
+    "subway": "논현",
+    "line": "7",
+    "xcoord": 37.511093,
+    "ycoord": 127.021415
+}, {
+    "subway": "반포",
+    "line": "7",
+    "xcoord": 37.508178,
+    "ycoord": 127.011727
+}, {
+    "subway": "내방",
+    "line": "7",
+    "xcoord": 37.487618,
+    "ycoord": 126.993513
+}, {
+    "subway": "숭실대입구",
+    "line": "7",
+    "xcoord": 37.496029,
+    "ycoord": 126.953822
+}, {
+    "subway": "상도",
+    "line": "7",
+    "xcoord": 37.502834,
+    "ycoord": 126.94791
+}, {
+    "subway": "장승배기",
+    "line": "7",
+    "xcoord": 37.504898,
+    "ycoord": 126.93915
+}, {
+    "subway": "신대방삼거리",
+    "line": "7",
+    "xcoord": 37.499701,
+    "ycoord": 126.928276
+}, {
+    "subway": "보라매",
+    "line": "7",
+    "xcoord": 37.499872,
+    "ycoord": 126.920428
+}, {
+    "subway": "남구로",
+    "line": "7",
+    "xcoord": 37.486056,
+    "ycoord": 126.887249
+}, {
+    "subway": "광명사거리",
+    "line": "7",
+    "xcoord": 37.479252,
+    "ycoord": 126.854876
+}, {
+    "subway": "천왕",
+    "line": "7",
+    "xcoord": 37.486637,
+    "ycoord": 126.838713
+}, {
+    "subway": "까치울",
+    "line": "7",
+    "xcoord": 37.506207,
+    "ycoord": 126.810939
+}, {
+    "subway": "부천종합운동장",
+    "line": "7",
+    "xcoord": 37.50538,
+    "ycoord": 126.797337
+}, {
+    "subway": "굴포천",
+    "line": "7",
+    "xcoord": 37.506997,
+    "ycoord": 126.73128
+}, {
+    "subway": "학동",
+    "line": "7",
+    "xcoord": 37.514229,
+    "ycoord": 127.031656
+}, {
+    "subway": "남성",
+    "line": "7",
+    "xcoord": 37.484596,
+    "ycoord": 126.971251
+}, {
+    "subway": "신풍",
+    "line": "7",
+    "xcoord": 37.50008,
+    "ycoord": 126.90993
+}, {
+    "subway": "춘의",
+    "line": "7",
+    "xcoord": 37.503663,
+    "ycoord": 126.787036
+}, {
+    "subway": "신중동",
+    "line": "7",
+    "xcoord": 37.503048,
+    "ycoord": 126.77596
+}, {
+    "subway": "부천시청",
+    "line": "7",
+    "xcoord": 37.504631,
+    "ycoord": 126.763538
+}, {
+    "subway": "상동",
+    "line": "7",
+    "xcoord": 37.505781,
+    "ycoord": 126.753083
+}, {
+    "subway": "삼산체육관",
+    "line": "7",
+    "xcoord": 37.506411,
+    "ycoord": 126.742153
+}, {
+    "subway": "철산",
+    "line": "7",
+    "xcoord": 37.47605,
+    "ycoord": 126.867911
+}, {
+    "subway": "역촌",
+    "line": "6",
+    "xcoord": 37.606021,
+    "ycoord": 126.922744
+}, {
+    "subway": "독바위",
+    "line": "6",
+    "xcoord": 37.618456,
+    "ycoord": 126.933031
+}, {
+    "subway": "구산",
+    "line": "6",
+    "xcoord": 37.611377,
+    "ycoord": 126.91727
+}, {
+    "subway": "증산",
+    "line": "6",
+    "xcoord": 37.583876,
+    "ycoord": 126.909645
+}, {
+    "subway": "디지털미디어시티",
+    "line": "6",
+    "xcoord": 37.576646,
+    "ycoord": 126.900984
+}, {
+    "subway": "월드컵경기장",
+    "line": "6",
+    "xcoord": 37.569532,
+    "ycoord": 126.899298
+}, {
+    "subway": "마포구청",
+    "line": "6",
+    "xcoord": 37.563515,
+    "ycoord": 126.903343
+}, {
+    "subway": "망원",
+    "line": "6",
+    "xcoord": 37.556094,
+    "ycoord": 126.910052
+}, {
+    "subway": "상수",
+    "line": "6",
+    "xcoord": 37.547716,
+    "ycoord": 126.922852
+}, {
+    "subway": "광흥창",
+    "line": "6",
+    "xcoord": 37.547456,
+    "ycoord": 126.931993
+}, {
+    "subway": "대흥",
+    "line": "6",
+    "xcoord": 37.547771,
+    "ycoord": 126.942069
+}, {
+    "subway": "효창공원앞",
+    "line": "6",
+    "xcoord": 37.539261,
+    "ycoord": 126.961351
+}, {
+    "subway": "이태원",
+    "line": "6",
+    "xcoord": 37.534488,
+    "ycoord": 126.994302
+}, {
+    "subway": "한강진",
+    "line": "6",
+    "xcoord": 37.539631,
+    "ycoord": 127.001725
+}, {
+    "subway": "버티고개",
+    "line": "6",
+    "xcoord": 37.548013,
+    "ycoord": 127.007055
+}, {
+    "subway": "창신",
+    "line": "6",
+    "xcoord": 37.579661,
+    "ycoord": 127.015241
+}, {
+    "subway": "보문",
+    "line": "6",
+    "xcoord": 37.585286,
+    "ycoord": 127.019381
+}, {
+    "subway": "안암",
+    "line": "6",
+    "xcoord": 37.586272,
+    "ycoord": 127.029005
+}, {
+    "subway": "고려대",
+    "line": "6",
+    "xcoord": 37.590508,
+    "ycoord": 127.036296
+}, {
+    "subway": "월곡",
+    "line": "6",
+    "xcoord": 37.601948,
+    "ycoord": 127.041518
+}, {
+    "subway": "상월곡",
+    "line": "6",
+    "xcoord": 37.606377,
+    "ycoord": 127.048491
+}, {
+    "subway": "돌곶이",
+    "line": "6",
+    "xcoord": 37.610537,
+    "ycoord": 127.056431
+}, {
+    "subway": "태릉입구",
+    "line": "6",
+    "xcoord": 37.617983,
+    "ycoord": 127.07512
+}, {
+    "subway": "화랑대",
+    "line": "6",
+    "xcoord": 37.620064,
+    "ycoord": 127.084689
+}, {
+    "subway": "봉화산",
+    "line": "6",
+    "xcoord": 37.617283,
+    "ycoord": 127.091401
+}, {
+    "subway": "새절",
+    "line": "6",
+    "xcoord": 37.591148,
+    "ycoord": 126.913629
+}, {
+    "subway": "녹사평",
+    "line": "6",
+    "xcoord": 37.534675,
+    "ycoord": 126.986695
+}, {
+    "subway": "응암",
+    "line": "6",
+    "xcoord": 37.598605,
+    "ycoord": 126.915577
+}, {
+    "subway": "개화산",
+    "line": "5",
+    "xcoord": 37.572399,
+    "ycoord": 126.806171
+}, {
+    "subway": "김포공항",
+    "line": "5",
+    "xcoord": 37.562434,
+    "ycoord": 126.801058
+}, {
+    "subway": "송정",
+    "line": "5",
+    "xcoord": 37.561184,
+    "ycoord": 126.811973
+}, {
+    "subway": "마곡",
+    "line": "5",
+    "xcoord": 37.560183,
+    "ycoord": 126.825448
+}, {
+    "subway": "발산",
+    "line": "5",
+    "xcoord": 37.558598,
+    "ycoord": 126.837668
+}, {
+    "subway": "우장산",
+    "line": "5",
+    "xcoord": 37.548768,
+    "ycoord": 126.836318
+}, {
+    "subway": "화곡",
+    "line": "5",
+    "xcoord": 37.541513,
+    "ycoord": 126.840461
+}, {
+    "subway": "까치산",
+    "line": "5",
+    "xcoord": 37.531768,
+    "ycoord": 126.846683
+}, {
+    "subway": "신정",
+    "line": "5",
+    "xcoord": 37.524997,
+    "ycoord": 126.856191
+}, {
+    "subway": "목동",
+    "line": "5",
+    "xcoord": 37.526065,
+    "ycoord": 126.864931
+}, {
+    "subway": "오목교",
+    "line": "5",
+    "xcoord": 37.524496,
+    "ycoord": 126.875181
+}, {
+    "subway": "양평",
+    "line": "5",
+    "xcoord": 37.525648,
+    "ycoord": 126.885778
+}, {
+    "subway": "여의도",
+    "line": "5",
+    "xcoord": 37.521624,
+    "ycoord": 126.924191
+}, {
+    "subway": "여의나루",
+    "line": "5",
+    "xcoord": 37.527098,
+    "ycoord": 126.932901
+}, {
+    "subway": "공덕",
+    "line": "5",
+    "xcoord": 37.544018,
+    "ycoord": 126.951592
+}, {
+    "subway": "애오개",
+    "line": "5",
+    "xcoord": 37.553736,
+    "ycoord": 126.95682
+}, {
+    "subway": "서대문",
+    "line": "5",
+    "xcoord": 37.565773,
+    "ycoord": 126.966641
+}, {
+    "subway": "광화문",
+    "line": "5",
+    "xcoord": 37.571026,
+    "ycoord": 126.976669
+}, {
+    "subway": "청구",
+    "line": "5",
+    "xcoord": 37.560245,
+    "ycoord": 127.013828
+}, {
+    "subway": "신금호",
+    "line": "5",
+    "xcoord": 37.554548,
+    "ycoord": 127.020331
+}, {
+    "subway": "행당",
+    "line": "5",
+    "xcoord": 37.557322,
+    "ycoord": 127.029476
+}, {
+    "subway": "마장",
+    "line": "5",
+    "xcoord": 37.5661,
+    "ycoord": 127.042973
+}, {
+    "subway": "장한평",
+    "line": "5",
+    "xcoord": 37.56144,
+    "ycoord": 127.064623
+}, {
+    "subway": "군자",
+    "line": "5",
+    "xcoord": 37.557121,
+    "ycoord": 127.079542
+}, {
+    "subway": "아차산",
+    "line": "5",
+    "xcoord": 37.551691,
+    "ycoord": 127.089761
+}, {
+    "subway": "광나루",
+    "line": "5",
+    "xcoord": 37.545303,
+    "ycoord": 127.10357
+}, {
+    "subway": "천호",
+    "line": "5",
+    "xcoord": 37.538397,
+    "ycoord": 127.123572
+}, {
+    "subway": "강동",
+    "line": "5",
+    "xcoord": 37.535804,
+    "ycoord": 127.132481
+}, {
+    "subway": "길동",
+    "line": "5",
+    "xcoord": 37.537801,
+    "ycoord": 127.140004
+}, {
+    "subway": "굽은다리",
+    "line": "5",
+    "xcoord": 37.545477,
+    "ycoord": 127.142853
+}, {
+    "subway": "명일",
+    "line": "5",
+    "xcoord": 37.55137,
+    "ycoord": 127.143999
+}, {
+    "subway": "고덕",
+    "line": "5",
+    "xcoord": 37.555004,
+    "ycoord": 127.154151
+}, {
+    "subway": "상일동",
+    "line": "5",
+    "xcoord": 37.556712,
+    "ycoord": 127.166417
+}, {
+    "subway": "올림픽공원",
+    "line": "5",
+    "xcoord": 37.516078,
+    "ycoord": 127.130848
+}, {
+    "subway": "오금",
+    "line": "5",
+    "xcoord": 37.502162,
+    "ycoord": 127.128111
+}, {
+    "subway": "개롱",
+    "line": "5",
+    "xcoord": 37.498079,
+    "ycoord": 127.13482
+}, {
+    "subway": "거여",
+    "line": "5",
+    "xcoord": 37.493105,
+    "ycoord": 127.14415
+}, {
+    "subway": "마천",
+    "line": "5",
+    "xcoord": 37.49499,
+    "ycoord": 127.152781
+}, {
+    "subway": "마포",
+    "line": "5",
+    "xcoord": 37.539574,
+    "ycoord": 126.945932
+}, {
+    "subway": "답십리",
+    "line": "5",
+    "xcoord": 37.566747,
+    "ycoord": 127.052704
+}, {
+    "subway": "둔촌동",
+    "line": "5",
+    "xcoord": 37.527788,
+    "ycoord": 127.136248
+}, {
+    "subway": "방화",
+    "line": "5",
+    "xcoord": 37.577446,
+    "ycoord": 126.812741
+}, {
+    "subway": "영등포시장",
+    "line": "5",
+    "xcoord": 37.522669,
+    "ycoord": 126.905139
+}, {
+    "subway": "방이",
+    "line": "5",
+    "xcoord": 37.508857,
+    "ycoord": 127.126133
+}, {
+    "subway": "중앙",
+    "line": "4",
+    "xcoord": 37.315941,
+    "ycoord": 126.838573
+}, {
+    "subway": "수리산",
+    "line": "4",
+    "xcoord": 37.349801,
+    "ycoord": 126.925365
+}, {
+    "subway": "한성대입구",
+    "line": "4",
+    "xcoord": 37.588458,
+    "ycoord": 127.006221
+}, {
+    "subway": "혜화",
+    "line": "4",
+    "xcoord": 37.582336,
+    "ycoord": 127.001844
+}, {
+    "subway": "명동",
+    "line": "4",
+    "xcoord": 37.560989,
+    "ycoord": 126.986325
+}, {
+    "subway": "회현",
+    "line": "4",
+    "xcoord": 37.558514,
+    "ycoord": 126.978246
+}, {
+    "subway": "숙대입구",
+    "line": "4",
+    "xcoord": 37.54456,
+    "ycoord": 126.972106
+}, {
+    "subway": "삼각지",
+    "line": "4",
+    "xcoord": 37.534777,
+    "ycoord": 126.97311
+}, {
+    "subway": "신용산",
+    "line": "4",
+    "xcoord": 37.52917,
+    "ycoord": 126.967894
+}, {
+    "subway": "이촌",
+    "line": "4",
+    "xcoord": 37.522272,
+    "ycoord": 126.974345
+}, {
+    "subway": "동작",
+    "line": "4",
+    "xcoord": 37.502971,
+    "ycoord": 126.979306
+}, {
+    "subway": "총신대입구(이수)",
+    "line": "4",
+    "xcoord": 37.486263,
+    "ycoord": 126.981989
+}, {
+    "subway": "선바위",
+    "line": "4",
+    "xcoord": 37.451673,
+    "ycoord": 127.002303
+}, {
+    "subway": "경마공원",
+    "line": "4",
+    "xcoord": 37.443885,
+    "ycoord": 127.007888
+}, {
+    "subway": "대공원",
+    "line": "4",
+    "xcoord": 37.435675,
+    "ycoord": 127.006523
+}, {
+    "subway": "과천",
+    "line": "4",
+    "xcoord": 37.433021,
+    "ycoord": 126.996568
+}, {
+    "subway": "정부과천청사",
+    "line": "4",
+    "xcoord": 37.426513,
+    "ycoord": 126.98978
+}, {
+    "subway": "인덕원",
+    "line": "4",
+    "xcoord": 37.401553,
+    "ycoord": 126.976715
+}, {
+    "subway": "평촌",
+    "line": "4",
+    "xcoord": 37.394287,
+    "ycoord": 126.963883
+}, {
+    "subway": "범계",
+    "line": "4",
+    "xcoord": 37.389793,
+    "ycoord": 126.950806
+}, {
+    "subway": "금정",
+    "line": "4",
+    "xcoord": 37.372221,
+    "ycoord": 126.943429
+}, {
+    "subway": "산본",
+    "line": "4",
+    "xcoord": 37.358101,
+    "ycoord": 126.933274
+}, {
+    "subway": "대야미",
+    "line": "4",
+    "xcoord": 37.328467,
+    "ycoord": 126.917332
+}, {
+    "subway": "반월",
+    "line": "4",
+    "xcoord": 37.312212,
+    "ycoord": 126.903524
+}, {
+    "subway": "상록수",
+    "line": "4",
+    "xcoord": 37.302795,
+    "ycoord": 126.866489
+}, {
+    "subway": "한대앞",
+    "line": "4",
+    "xcoord": 37.309689,
+    "ycoord": 126.85344
+}, {
+    "subway": "고잔",
+    "line": "4",
+    "xcoord": 37.316777,
+    "ycoord": 126.823249
+}, {
+    "subway": "초지",
+    "line": "4",
+    "xcoord": 37.320646,
+    "ycoord": 126.805913
+}, {
+    "subway": "안산",
+    "line": "4",
+    "xcoord": 37.327082,
+    "ycoord": 126.788532
+}, {
+    "subway": "신길온천",
+    "line": "4",
+    "xcoord": 37.338212,
+    "ycoord": 126.765844
+}, {
+    "subway": "정왕",
+    "line": "4",
+    "xcoord": 37.351735,
+    "ycoord": 126.742989
+}, {
+    "subway": "오이도",
+    "line": "4",
+    "xcoord": 37.362357,
+    "ycoord": 126.738714
+}, {
+    "subway": "남태령",
+    "line": "4",
+    "xcoord": 37.463873,
+    "ycoord": 126.989134
+}, {
+    "subway": "당고개",
+    "line": "4",
+    "xcoord": 37.670272,
+    "ycoord": 127.079066
+}, {
+    "subway": "상계",
+    "line": "4",
+    "xcoord": 37.660878,
+    "ycoord": 127.073572
+}, {
+    "subway": "노원",
+    "line": "4",
+    "xcoord": 37.655128,
+    "ycoord": 127.061368
+}, {
+    "subway": "창동",
+    "line": "4",
+    "xcoord": 37.653166,
+    "ycoord": 127.047731
+}, {
+    "subway": "쌍문",
+    "line": "4",
+    "xcoord": 37.648627,
+    "ycoord": 127.034709
+}, {
+    "subway": "수유",
+    "line": "4",
+    "xcoord": 37.638052,
+    "ycoord": 127.025732
+}, {
+    "subway": "미아",
+    "line": "4",
+    "xcoord": 37.62667,
+    "ycoord": 127.025983
+}, {
+    "subway": "미아사거리",
+    "line": "4",
+    "xcoord": 37.613292,
+    "ycoord": 127.030053
+}, {
+    "subway": "길음",
+    "line": "4",
+    "xcoord": 37.603407,
+    "ycoord": 127.025053
+}, {
+    "subway": "성신여대입구",
+    "line": "4",
+    "xcoord": 37.592624,
+    "ycoord": 127.016403
+}]

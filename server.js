@@ -10,12 +10,12 @@ var a = new Date();
 
 var today = moment().startOf('day'),
     yesterday = moment(today).add(-1, 'days');
-    now = moment();
+now = moment();
 
-    var hour = parseInt("1") * -1;
-    var to = moment(now).add(hour, 'hours');
-    console.log(to.toDate());
-    console.log(now.toDate());
+var hour = parseInt("1") * -1;
+var to = moment(now).add(hour, 'hours');
+console.log(to.toDate());
+console.log(now.toDate());
 
 //console.log(now.format(), "     ", asd.format()); print moment
 
@@ -32,6 +32,15 @@ db.on("error", function(err) {
 /////////////////////////////////////////////////////////////
 // DB QUERY //
 /////////////////////////////////////////////////////////////
+var subwaySchema = mongoose.Schema({
+  subways: [{
+    subway: String,
+    line: String,
+    xcoord: Number,
+    ycoord: Number
+  }]
+});
+var Subway = mongoose.model('subway', subwaySchema);
 var childSchema = mongoose.Schema({
     username: {
         type: String,
@@ -270,9 +279,21 @@ var server = net.createServer(function(socket) {
               });
             }*/
 
-            if (packet.type == "test") {
-                socket.write(packet.content + '\n');
-                return console.log(packet.content);
+            if (packet.type == "start") {
+
+                var s = "";
+                Subway.find({}, function(err, data) {
+                    //console.log(data[0].subways.length);
+                    console.log(data[0].subways[1].subway);
+                    for (var i = 0; i < data[0].subways.length; i++) {
+                        //s += JSON.stringify(data[0].subways[i]);
+                        //console.log(data[0].subways[i]);
+                        //console.log(s);
+                        s += data[0].subways[i].subway + '/' + data[0].subways[i].line + '/' + data[0].subways[i].xcoord + '/' + data[0].subways[i].ycoord + ':';
+                    }
+                    socket.write(s + '\n');
+                    return console.log(s);
+                });
             }
 
             if (packet.type == "login") { // LOGIN
@@ -493,16 +514,16 @@ var server = net.createServer(function(socket) {
                 console.log(packet);
 
                 Child.find({
-                  username:packet.childName,
-                  "location.createdAt": {
+                    username: packet.childName,
+                    "location.createdAt": {
                         $gte: to.toDate()
-                     }
-                  }, function (err, data) {
+                    }
+                }, function(err, data) {
                     if (err) {
                         socket.write("6-2\n");
                         return console.log(err);
                     }
-                    if (!data) {
+                    if (!data | !data[0].location) {
                         console.log("6-2 No data");
                         return socket.write("6-2 No data\n");
                     }
@@ -510,27 +531,25 @@ var server = net.createServer(function(socket) {
                     var rtn = "6-1/";
                     var arr = {};
                     for (i = 0; i < data[0].location.length; i++)
-                      if (data[0].location[i].createdAt > to.toDate()) {
-                        arr[len] = data[0].location[i];
-                        len++;
-                        console.log(data[0].location[i].createdAt);
-                      }
-
+                        if (data[0].location[i].createdAt > to.toDate()) {
+                            arr[len] = data[0].location[i];
+                            len++;
+                            console.log(data[0].location[i].createdAt);
+                        }
                     if (len < 11) {
                         for (i = 0; i < len; i++) {
-                            rtn += arr[i].latitude + ':' + arr[i].longitude + '/';
+                            rtn += arr[i].latitude + '/' + arr[i].longitude + '/';
                             //rtn += data.location[i].latitude + ':' + data.location[i].longitude + '/';
                         }
-                    }
-                    else {
+                    } else {
                         for (i = 0; i < 10; i++) {
-                            var incre = parseInt(len/10) * i;
-                            rtn += data.location[incre].latitude + ':' + data.location[incre].longitude + '/';
+                            var incre = parseInt(len / 10) * i;
+                            rtn += arr[incre].latitude + '/' + arr[incre].longitude + '/';
                         }
                     }
                     socket.write(rtn + '\n');
                     return console.log(rtn);
-                  });
+                });
             }
 
             ///////////////////////////////////////////////////////////////////////////
