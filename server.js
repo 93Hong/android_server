@@ -2,7 +2,6 @@ var net = require('net');
 var mongoose = require('mongoose');
 var HashMap = require('hashmap');
 var gcm = require('node-gcm');
-var fs = require('fs');
 var schedule = require('node-schedule');
 var moment = require('moment');
 
@@ -14,8 +13,7 @@ now = moment();
 
 var hour = parseInt("1") * -1;
 var to = moment(now).add(hour, 'hours');
-console.log(to.toDate());
-console.log(now.toDate());
+//console.log(now.toDate());
 
 //console.log(now.format(), "     ", asd.format()); print moment
 
@@ -237,6 +235,7 @@ var map = new HashMap();
 
 var server = net.createServer(function(socket) {
     console.log("#red[Client connected to the server with ip: " + socket.remoteAddress + "]");
+    socket.write("0-0\n");
     //sockets.push(socket); // sockets / sockets.write('\n');
 
     socket.on("error", function(error) {
@@ -281,7 +280,7 @@ var server = net.createServer(function(socket) {
 
             if (packet.type == "start") {
 
-                var s = "";
+                var s = "0-1/";
                 Subway.find({}, function(err, data) {
                     //console.log(data[0].subways.length);
                     console.log(data[0].subways[1].subway);
@@ -289,7 +288,7 @@ var server = net.createServer(function(socket) {
                         //s += JSON.stringify(data[0].subways[i]);
                         //console.log(data[0].subways[i]);
                         //console.log(s);
-                        s += data[0].subways[i].subway + '/' + data[0].subways[i].line + '/' + data[0].subways[i].xcoord + '/' + data[0].subways[i].ycoord + ':';
+                        s += data[0].subways[i].subway + '/' + data[0].subways[i].line + '/' + data[0].subways[i].xcoord + '/' + data[0].subways[i].ycoord + '/';
                     }
                     socket.write(s + '\n');
                     return console.log(s);
@@ -444,13 +443,13 @@ var server = net.createServer(function(socket) {
                         return console.log('4-2/getLocation error');
                     }
                     if (!map.has(packet.username)) {
-                        //var token = data.token;
+                        var token = data.token;
                         //'eylbdJ_KUCo:APA91bHDT7ix0mOjb6sWoKJE5d6p7LNZVWmh3ACyZV3xPK2hcD35GDIV95NcGzh5Qox7R4PZLZrLwa_tiiFJjaXdvzgmhjDTbqRidujgci2Z9vEGtzHWW8EkeHW9pVK0uJTc6R63UvKV';
-                        //registrationIds.push(token);
+                        registrationIds.push(token);
 
-                        //sender.send(message, registrationIds, 4, function (err, result) {
-                        //    console.log(result);
-                        //});
+                        sender.send(message, registrationIds, 4, function (err, result) {
+                            console.log(result);
+                        });
                     }
                     var address = data.location.length - 1;
                     var lat = data.location[address].latitude;
@@ -562,7 +561,7 @@ var server = net.createServer(function(socket) {
     });
 });
 
-server.listen(52273, function() {
+server.listen(9000, function() {
     //'listening' listener
     console.log('Server is listening for incoming connections');
 });
