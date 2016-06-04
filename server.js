@@ -1,6 +1,6 @@
 var net = require('net');
 var mongoose = require('mongoose');
-var HashMap = require('hashmap');
+//var HashMap = require('hashmap');
 var gcm = require('node-gcm');
 var schedule = require('node-schedule');
 var moment = require('moment');
@@ -9,12 +9,11 @@ var a = new Date();
 
 var today = moment().startOf('day'),
     yesterday = moment(today).add(-1, 'days');
-now = moment();
+    now = moment();
 
 var hour = parseInt("1") * -1;
 var to = moment(now).add(hour, 'hours');
 //console.log(now.toDate());
-
 //console.log(now.format(), "     ", asd.format()); print moment
 
 //mongoose.connect("mongodb://hong:honghong@ds015962.mlab.com:15962/mobile");
@@ -31,14 +30,22 @@ db.on("error", function(err) {
 // DB QUERY //
 /////////////////////////////////////////////////////////////
 var subwaySchema = mongoose.Schema({
-  subways: [{
-    subway: String,
-    line: String,
-    xcoord: Number,
-    ycoord: Number
-  }]
+    subways: [{
+        subway: String,
+        line: String,
+        xcoord: Number,
+        ycoord: Number
+    }]
 });
 var Subway = mongoose.model('subway', subwaySchema);
+var dangerSchema = mongoose.Schema({
+    childName: String,
+    time: String,
+    distance: Number,
+    latitude: Number,
+    longitude: Number
+});
+var Danger = mongoose.model('danger', dangerSchema);
 var childSchema = mongoose.Schema({
     username: {
         type: String,
@@ -107,6 +114,7 @@ var parentSchema = mongoose.Schema({
 });
 var Parent = mongoose.model('parent', parentSchema);
 
+
 //  remove all locaton updated before today at 10 AM
 var j = schedule.scheduleJob({
     hour: 10,
@@ -160,24 +168,12 @@ for (var devName in interfaces) {
 /////////////////////////////////////////////////
 // TOKEN AND GCM //
 /////////////////////////////////////////////////
-var server_api_key = 'AIzaSyAH_oXjEPf7L0km8jr876wXnfmsgimVBrQ';
+var server_api_key = 'AIzaSyDfCwb2Ae4GxEGfI2VZZCOCrtBqBvG8k2E';
 var sender = new gcm.Sender(server_api_key);
 var registrationIds = [];
 
 var message = new gcm.Message();
 
-var message = new gcm.Message({
-    collapseKey: 'demo',
-    delayWhileIdle: true,
-    timeToLive: 3,
-    data: {
-        title: 'saltfactory GCM demo',
-        message: 'Google Cloud Messaging',
-        desc: "설명입니다",
-        custom_key1: 'custom data1',
-        custom_key2: 'custom data2'
-    }
-});
 /*
 for (var i=0; i<push_ids.length; i++) { // 여러개보내기
      registrationIds.push(push_ids[i]);
@@ -213,6 +209,13 @@ function setChild(data) {
     });
 }
 
+function getDangerQuery(name) { // use for LOGIN child
+    var query = Danger.findOne({
+        childName: name
+    });
+    return query;
+}
+
 function getChildQuery(name) { // use for LOGIN child
     var query = Child.findOne({
         username: name
@@ -231,7 +234,7 @@ function getParentQuery(name) { // use for LOGIN parent
 // Avoid dead sockets by responding to the 'end' event
 //var sockets = [];
 var onUser;
-var map = new HashMap();
+//var map = new HashMap();
 
 var server = net.createServer(function(socket) {
     console.log("#red[Client connected to the server with ip: " + socket.remoteAddress + "]");
@@ -244,11 +247,10 @@ var server = net.createServer(function(socket) {
     // Use splice to get rid of the socket that is ending. // client close
     // The 'close' event means tcp client has disconnected.
     socket.on("close", function() {
-
         //var i = sockets.indexOf(socket);
         //sockets.splice(i, 1);
         //console.log('length : ', sockets.length, ' id : ', i);
-        map.remove(onUser);
+        //map.remove(onUser);
         console.log("#red[Client has disconnected" + socket.remoteAddress + "]");
     });
 
@@ -291,7 +293,7 @@ var server = net.createServer(function(socket) {
                         s += data[0].subways[i].subway + '/' + data[0].subways[i].line + '/' + data[0].subways[i].xcoord + '/' + data[0].subways[i].ycoord + '/';
                     }
                     socket.write(s + '\n');
-                    return console.log(s);
+                    return;// console.log(s);
                 });
             }
 
@@ -307,11 +309,7 @@ var server = net.createServer(function(socket) {
                         return console.log("Wrong ID");
                     } else if (packet.password == data.password) { // login ok
                         onUser = data.username;
-                        map.set(data.username, socket); // map.get(data.username)
-
-                        // Add the new client socket connection to the array of sockets // client on
-                        //sockets.push(socket); // sockets / sockets.write('\n');
-                        //console.log(sockets.length, " : ", packet.username);
+                        //map.set(data.username, socket); // map.get(data.username)
 
                         socket.write("1-1\n");
                         return console.log("User ", data.username, " login");
@@ -323,7 +321,7 @@ var server = net.createServer(function(socket) {
             }
 
             if (packet.type == "register") { // REGISTER
-                socket.write(JSON.stringify(packet.type + " " + packet.username) + "\n"); // [object Object]\n
+                //socket.write(JSON.stringify(packet.type + " " + packet.username) + "\n"); // [object Object]\n
 
                 ///////////////////////////  register in db
                 if (packet.userType == "Child") {
@@ -387,21 +385,21 @@ var server = net.createServer(function(socket) {
 
             if (packet.type == "getList") {
                 getParentQuery(packet.username).exec(function(err, data) {
-                    var rtn = "3-2",
-                        tmp = "token";
+                    var rtn = "3-2";
+                        //tmp = "token";
                     if (data.childs.length > 0) { // childs exist
                         rtn = "3-1/";
                         for (var i = 0; i < data.childs.length; i++) {
                             rtn = rtn + data.childs[i].username + "/"; //3-1name/name/name/
-                            if (map.has(data.childs[i].username))
-                                tmp += "o";
-                            else
-                                tmp += "x";
+                            //if (map.has(data.childs[i].username))
+                            //    tmp += "o";
+                            //else
+                            //    tmp += "x";
                         }
-                        socket.write(rtn + tmp + '\n'); //3-1name/name/name/oxo
+                        socket.write(rtn + '\n'); //3-1name/name/name/oxo
                     } else // childs not exist
                         socket.write('3-2\n');
-                    return console.log(rtn, tmp);
+                    return console.log(rtn);
                 });
             }
 
@@ -442,15 +440,29 @@ var server = net.createServer(function(socket) {
                         socket.write('4-2/getLocation error\n');
                         return console.log('4-2/getLocation error');
                     }
-                    if (!map.has(packet.username)) {
+                    /*if (!map.has(packet.username)) {
                         var token = data.token;
                         //'eylbdJ_KUCo:APA91bHDT7ix0mOjb6sWoKJE5d6p7LNZVWmh3ACyZV3xPK2hcD35GDIV95NcGzh5Qox7R4PZLZrLwa_tiiFJjaXdvzgmhjDTbqRidujgci2Z9vEGtzHWW8EkeHW9pVK0uJTc6R63UvKV';
                         registrationIds.push(token);
 
-                        sender.send(message, registrationIds, 4, function (err, result) {
+                        var message = new gcm.Message({
+                            collapseKey: 'demo',
+                            delayWhileIdle: true,
+                            timeToLive: 3,
+                            data: {
+                                title: 'saltfactory GCM demo',
+                                message: 'Google Cloud Messaging',
+                                desc: "설명입니다",
+                                custom_key1: 'custom data1',
+                                custom_key2: 'custom data2'
+                            }
+                        });
+
+                        sender.send(message, registrationIds, 4, function(err, result) {
                             console.log(result);
                         });
-                    }
+                        registrationIds.pop();
+                    }*/
                     var address = data.location.length - 1;
                     var lat = data.location[address].latitude;
                     var lng = data.location[address].longitude;
@@ -493,17 +505,91 @@ var server = net.createServer(function(socket) {
             // DANGER ZONE // TRACE //
             ///////////////////////////////////////////////////////////////////////////
 
+            // Danger zone : ADD / DELETE / ALERT / CHECK /////////////////////////////
             if (packet.type == "dangerZone") {
-                if (map.has(packet.childName)) {
-                    map.get(packet.childName).write("5-1/" + packet.lat + "/" + packet.lng + "/" + packet.radius + "\n");
-                } else {
-                    socket.write("Error : Child not active\n");
-                    return console.log("Error : Child not active");
+                console.log(packet);
+                if (packet.subType == "add") {
+                    query = getDangerQuery(packet.childName);
+                    query.exec(function(err, data) {
+                        if (data) {
+                            console.log("Already exsist dangerZone");
+                            return socket.write("5-2 already exsist\n");
+                        } else {
+                            Danger.create({
+                                    childName: packet.childName,
+                                    time: packet.time,
+                                    distance: packet.radius,
+                                    latitude: packet.lat,
+                                    longitude: packet.lng
+                                },
+                                function(err, data) { // create variable
+                                    if (err) return console.log("5-2 Danger error ", err);
+                                    setChild(packet); // enrol child to parent
+                                    socket.write("5-1/danger on\n"); //User registered
+                                    return console.log("5-1 danger on ", data);
+                                });
+                        }
+                    });
                 }
-                //sockets.forEach(function(entry) {
-                //    if (entry.username == packet.username) {}
-                //});
-                //packet.lat packet.lng packet.childName packet.radius packet.isOn
+                if (packet.subType == 'delete') {
+                    Danger.findOne({ childName: packet.childName }).remove(function(err, data) {
+                        if (err) return console.log(err);
+                        socket.write("Danger delete\n");
+                        return console.log("danger delete", data);
+                    });
+                }
+                if (packet.subType == 'check') {
+                    query = getDangerQuery(packet.username);
+                    query.exec(function(err, data) {
+                        if (err) return console.log(err);
+                        if (data === null) {
+                            socket.write("5-2/0/0\n"); //Wrong ID
+                            return console.log("5-2/Wrong child name");
+                        }
+                        var std = "5-1";
+                        std = std + "/" + data.latitude + "/" + data.longitude + "/" + data.time + "/" + data.distance;
+                        socket.write(std + "\n");
+                    });
+                }
+                if (packet.subType == "alert") {
+                    var pName;
+                    query = getChildQuery(packet.username);
+                    query.exec(function(err, data) {
+                        if (err) return console.log(err);
+                        if (data === null)
+                            return console.log("Wrong child");
+                        pName = data.parentName;
+
+                        var query2 = getParentQuery(pName);
+                        query2.exec(function(err, data2) {
+                            if (err) return console.log(err);
+                            if (data === null) {
+                                return console.log("Wrong parent");
+                            }
+                            var token = data2.token;
+                            registrationIds.push(token);
+
+                            var message = new gcm.Message({
+                                collapseKey: 'demo',
+                                delayWhileIdle: true,
+                                timeToLive: 3,
+                                data: {
+                                    title: 'Danger zone ALERT!!',
+                                    message: packet.username + '가 위험구역을 벗어납니다',
+                                    desc: 'In Danger',
+                                    custom_key1: 'custom data1',
+                                    custom_key2: 'custom data2'
+                                }
+                            });
+
+                            sender.send(message, registrationIds, 4, function(err, result) {
+                                console.log(result);
+                            });
+                            registrationIds.pop();
+                        });
+                    });
+
+                }
             }
 
             if (packet.type == "getTrace") {
@@ -526,7 +612,8 @@ var server = net.createServer(function(socket) {
                         console.log("6-2 No data");
                         return socket.write("6-2 No data\n");
                     }
-                    var len = 0, i;
+                    var len = 0,
+                        i;
                     var rtn = "6-1/";
                     var arr = {};
                     for (i = 0; i < data[0].location.length; i++)
@@ -554,6 +641,52 @@ var server = net.createServer(function(socket) {
             ///////////////////////////////////////////////////////////////////////////
             // DANGER ZONE // TRACE // END
             ///////////////////////////////////////////////////////////////////////////
+
+            ///////////////////////////////////////////////////////////////////////////
+            // SUBWAY GCM //
+            ///////////////////////////////////////////////////////////////////////////
+
+            if (packet.type == "noticeSubway") {
+                var tName;
+                query = getChildQuery(packet.username);
+                query.exec(function(err, data) {
+                    if (err) return console.log(err);
+                    if (data === null) {
+                        return console.log("Wrong child");
+                    }
+                    tName = data.parentName;
+
+                    var query2 = getParentQuery(tName);
+                    query2.exec(function(err, data2) {
+                        if (err) return console.log(err);
+                        if (data2 === null) {
+                            return console.log("Wrong parent");
+                        }
+                        var token = data2.token;
+                        registrationIds.push(token);
+
+                        var message = new gcm.Message({
+                            collapseKey: 'demo',
+                            delayWhileIdle: true,
+                            timeToLive: 3,
+                            data: {
+                                title: 'Subway Alert',
+                                message: packet.message,
+                                desc: 'hi',
+                                custom_key1: 'custom data1',
+                                custom_key2: 'custom data2'
+                            }
+                        });
+
+                        sender.send(message, registrationIds, 4, function(err, result) {
+                            console.log(result);
+                        });
+                        registrationIds.pop();
+                        socket.write('Subway msg done\n');
+                        return console.log('Subway msg done');
+                    });
+                });
+            }
 
         } catch (e) {
             console.log("Else " + e.message);
