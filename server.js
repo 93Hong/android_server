@@ -110,6 +110,10 @@ var parentSchema = mongoose.Schema({
     token: {
         type: String,
         required: true
+    },
+    gcmOn: {
+        type: Boolean,
+        required: true
     }
 });
 var Parent = mongoose.model('parent', parentSchema);
@@ -251,6 +255,7 @@ var server = net.createServer(function(socket) {
         //sockets.splice(i, 1);
         //console.log('length : ', sockets.length, ' id : ', i);
         //map.remove(onUser);
+        //socket.destroy();
         console.log("#red[Client has disconnected" + socket.remoteAddress + "]");
     });
 
@@ -360,7 +365,8 @@ var server = net.createServer(function(socket) {
                                     username: packet.username,
                                     password: packet.password,
                                     email: packet.email,
-                                    token: packet.token
+                                    token: packet.token,
+                                    gcmOn: true
                                 },
                                 function(err, data) { // create variable
                                     if (err) return console.log("Data error ", err);
@@ -380,7 +386,7 @@ var server = net.createServer(function(socket) {
             ///////////////////////////////////////////////////////////////////////////
 
             ///////////////////////////////////////////////////////////////////////////
-            // GET LIST // INSERT CHILDS //
+            // GET LIST // INSERT CHILDS // GCM ON OFF //
             ///////////////////////////////////////////////////////////////////////////
 
             if (packet.type == "getList") {
@@ -400,6 +406,20 @@ var server = net.createServer(function(socket) {
                     } else // childs not exist
                         socket.write('3-2\n');
                     return console.log(rtn);
+                });
+            }
+
+            if (packet.type == "gcm") {
+                query = getParentQuery(packet.username);
+                query.exec(function(err, data) {
+                    Parent.update({
+                        username: packet.username
+                    }, {
+                        "gcmOn":!data.gcmOn
+                    }, function(err) {
+                       console.log(err);
+                    });
+                    return console.log(packet.username, " gcm to ", !data.gcmOn);
                 });
             }
 
@@ -512,9 +532,10 @@ var server = net.createServer(function(socket) {
                     query = getDangerQuery(packet.childName);
                     query.exec(function(err, data) {
                         if (data) {
-                            console.log("Already exsist dangerZone");
-                            return socket.write("5-2 already exsist\n");
-                        } else {
+                            data.remove();
+                            //console.log("Already exsist dangerZone");
+                            //return socket.write("5-2 already exsist\n");
+                        //} else {
                             Danger.create({
                                     childName: packet.childName,
                                     time: packet.time,
@@ -534,7 +555,6 @@ var server = net.createServer(function(socket) {
                 if (packet.subType == 'delete') {
                     Danger.findOne({ childName: packet.childName }).remove(function(err, data) {
                         if (err) return console.log(err);
-                        socket.write("Danger delete\n");
                         return console.log("danger delete", data);
                     });
                 }
@@ -546,9 +566,11 @@ var server = net.createServer(function(socket) {
                             socket.write("5-2/0/0\n"); //Wrong ID
                             return console.log("5-2/Wrong child name");
                         }
-                        var std = "5-1";
-                        std = std + "/" + data.latitude + "/" + data.longitude + "/" + data.time + "/" + data.distance;
-                        socket.write(std + "\n");
+                        if (data.gcmOn === true) {
+                            var std = "5-1";
+                            std = std + "/" + data.latitude + "/" + data.longitude + "/" + data.time + "/" + data.distance;
+                            socket.write(std + "\n");
+                        }
                     });
                 }
                 if (packet.subType == "alert") {
@@ -566,26 +588,28 @@ var server = net.createServer(function(socket) {
                             if (data === null) {
                                 return console.log("Wrong parent");
                             }
-                            var token = data2.token;
-                            registrationIds.push(token);
+                            if (data2.gcmOn === true) {
+                                var token = data2.token;
+                                registrationIds.push(token);
+                                var message = new gcm.Message({
+                                    collapseKey: 'demo',
+                                    delayWhileIdle: true,
+                                    timeToLive: 3,
+                                    data: {
+                                        title: 'Danger zone ALERT!!',
+                                        message: packet.username + '가 위험구역을 벗어납니다',
+                                        desc: 'In Danger',
+                                        custom_key1: 'custom data1',
+                                        custom_key2: 'custom data2'
+                                    }
+                                });
 
-                            var message = new gcm.Message({
-                                collapseKey: 'demo',
-                                delayWhileIdle: true,
-                                timeToLive: 3,
-                                data: {
-                                    title: 'Danger zone ALERT!!',
-                                    message: packet.username + '가 위험구역을 벗어납니다',
-                                    desc: 'In Danger',
-                                    custom_key1: 'custom data1',
-                                    custom_key2: 'custom data2'
-                                }
-                            });
 
-                            sender.send(message, registrationIds, 4, function(err, result) {
-                                console.log(result);
-                            });
-                            registrationIds.pop();
+                                sender.send(message, registrationIds, 4, function(err, result) {
+                                    console.log(result);
+                                });
+                                registrationIds.pop();
+                            }
                         });
                     });
 
@@ -662,26 +686,29 @@ var server = net.createServer(function(socket) {
                         if (data2 === null) {
                             return console.log("Wrong parent");
                         }
-                        var token = data2.token;
-                        registrationIds.push(token);
 
-                        var message = new gcm.Message({
-                            collapseKey: 'demo',
-                            delayWhileIdle: true,
-                            timeToLive: 3,
-                            data: {
-                                title: 'Subway Alert',
-                                message: packet.message,
-                                desc: 'hi',
-                                custom_key1: 'custom data1',
-                                custom_key2: 'custom data2'
-                            }
-                        });
+                        if (data2.gcmOn === true) {
+                            var token = data2.token;
+                            registrationIds.push(token);
 
-                        sender.send(message, registrationIds, 4, function(err, result) {
-                            console.log(result);
-                        });
-                        registrationIds.pop();
+                            var message = new gcm.Message({
+                                collapseKey: 'demo',
+                                delayWhileIdle: true,
+                                timeToLive: 3,
+                                data: {
+                                    title: 'Subway Alert',
+                                    message: packet.message,
+                                    desc: 'hi',
+                                    custom_key1: 'custom data1',
+                                    custom_key2: 'custom data2'
+                                }
+                            });
+
+                            sender.send(message, registrationIds, 4, function(err, result) {
+                                console.log(result);
+                            });
+                            registrationIds.pop();
+                        }
                         socket.write('Subway msg done\n');
                         return console.log('Subway msg done');
                     });
