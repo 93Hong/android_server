@@ -1,6 +1,5 @@
 var net = require('net');
 var mongoose = require('mongoose');
-//var HashMap = require('hashmap');
 var gcm = require('node-gcm');
 var schedule = require('node-schedule');
 var moment = require('moment');
@@ -11,13 +10,8 @@ var today = moment().startOf('day'),
     yesterday = moment(today).add(-1, 'days');
     now = moment();
 
-var hour = parseInt("1") * -1;
-var to = moment(now).add(hour, 'hours');
-//console.log(now.toDate());
-//console.log(now.format(), "     ", asd.format()); print moment
-
-//mongoose.connect("mongodb://hong:honghong@ds015962.mlab.com:15962/mobile");
-mongoose.connect(process.env.MONGO_DB); // encryption
+mongoose.connect("mongodb://hong:honghong@ds015962.mlab.com:15962/mobile");
+//mongoose.connect(process.env.MONGO_DB); // encryption
 var db = mongoose.connection;
 db.once("open", function() {
     console.log("DB connected!");
@@ -25,6 +19,19 @@ db.once("open", function() {
 db.on("error", function(err) {
     console.log("DB error : ", err);
 });
+
+/*var hour = parseInt(1) * -1;
+var to = moment(now).add(hour, 'hours');
+var x = new Date();
+console.log("/  ", to.toDate());
+console.log("/  ", x);
+if (x < to.toDate())
+  console.log("true");
+else if (x > to.toDate())
+  console.log("false");
+else {
+  console.log("??");
+}*/
 
 /////////////////////////////////////////////////////////////
 // DB QUERY //
@@ -117,7 +124,6 @@ var parentSchema = mongoose.Schema({
     }
 });
 var Parent = mongoose.model('parent', parentSchema);
-
 
 //  remove all locaton updated before today at 10 AM
 var j = schedule.scheduleJob({
@@ -236,9 +242,6 @@ function getParentQuery(name) { // use for LOGIN parent
 
 // Keep a pool of sockets ready for everyone
 // Avoid dead sockets by responding to the 'end' event
-//var sockets = [];
-var onUser;
-//var map = new HashMap();
 
 var server = net.createServer(function(socket) {
     console.log("#red[Client connected to the server with ip: " + socket.remoteAddress + "]");
@@ -361,6 +364,8 @@ var server = net.createServer(function(socket) {
                     getParentQuery(packet.username).exec(function(err, data) {
                         if (err) return console.log("Data error ", err);
                         if (!data) {
+                            if (packet.username === null)
+                                return console.log("Parent name null error");
                             Parent.create({
                                     username: packet.username,
                                     password: packet.password,
@@ -392,6 +397,8 @@ var server = net.createServer(function(socket) {
             if (packet.type == "getList") {
                 getParentQuery(packet.username).exec(function(err, data) {
                     var rtn = "3-2";
+                    console.log(packet);
+                    console.log(packet.username);
                         //tmp = "token";
                     if (data.childs.length > 0) { // childs exist
                         rtn = "3-1/";
@@ -460,39 +467,26 @@ var server = net.createServer(function(socket) {
                         socket.write('4-2/getLocation error\n');
                         return console.log('4-2/getLocation error');
                     }
-                    /*if (!map.has(packet.username)) {
-                        var token = data.token;
-                        //'eylbdJ_KUCo:APA91bHDT7ix0mOjb6sWoKJE5d6p7LNZVWmh3ACyZV3xPK2hcD35GDIV95NcGzh5Qox7R4PZLZrLwa_tiiFJjaXdvzgmhjDTbqRidujgci2Z9vEGtzHWW8EkeHW9pVK0uJTc6R63UvKV';
-                        registrationIds.push(token);
-
-                        var message = new gcm.Message({
-                            collapseKey: 'demo',
-                            delayWhileIdle: true,
-                            timeToLive: 3,
-                            data: {
-                                title: 'saltfactory GCM demo',
-                                message: 'Google Cloud Messaging',
-                                desc: "설명입니다",
-                                custom_key1: 'custom data1',
-                                custom_key2: 'custom data2'
-                            }
-                        });
-
-                        sender.send(message, registrationIds, 4, function(err, result) {
-                            console.log(result);
-                        });
-                        registrationIds.pop();
-                    }*/
                     var address = data.location.length - 1;
+                    var current = new Date();
+
                     var lat = data.location[address].latitude;
                     var lng = data.location[address].longitude;
                     var spd = data.location[address].speed;
-                    socket.write('4-1/' + data.username + '/' + lat + '/' + lng + '/' + spd + '\n'); // + query.createdAt
-                    return console.log('4-1/', data.username, '/', lat, '/', lng, '/', spd);
+
+                    //////////////////// 한시간 이상 업뎃 안되있으면
+                    if (data.location[address].createdAt.getHours() < current.getHours()) {
+                        socket.write('7-1/' + data.username + '/' + lat + '/' + lng + '/' + spd + '\n');
+                        return console.log('7-1/', data.username, '/', lat, '/', lng, '/', spd);
+                    } else {
+                        socket.write('4-1/' + data.username + '/' + lat + '/' + lng + '/' + spd + '\n'); // + query.createdAt
+                        return console.log('4-1/', data.username, '/', lat, '/', lng, '/', spd);
+                    }
                 });
             }
 
             if (packet.type == "setLocation") {
+                console.log(Date.now());
                 Child.update({
                     username: packet.username
                 }, {
@@ -536,6 +530,7 @@ var server = net.createServer(function(socket) {
                             //console.log("Already exsist dangerZone");
                             //return socket.write("5-2 already exsist\n");
                         //} else {
+                      }
                             Danger.create({
                                     childName: packet.childName,
                                     time: packet.time,
@@ -549,7 +544,7 @@ var server = net.createServer(function(socket) {
                                     socket.write("5-1/danger on\n"); //User registered
                                     return console.log("5-1 danger on ", data);
                                 });
-                        }
+
                     });
                 }
                 if (packet.subType == 'delete') {
@@ -564,13 +559,12 @@ var server = net.createServer(function(socket) {
                         if (err) return console.log(err);
                         if (data === null) {
                             socket.write("5-2/0/0\n"); //Wrong ID
-                            return console.log("5-2/Wrong child name");
+                            return console.log("5-2/There isn't danger zone");
                         }
-                        if (data.gcmOn === true) {
-                            var std = "5-1";
-                            std = std + "/" + data.latitude + "/" + data.longitude + "/" + data.time + "/" + data.distance;
-                            socket.write(std + "\n");
-                        }
+                        var std = "5-1";
+                        std = std + "/" + data.latitude + "/" + data.longitude + "/" + data.time + "/" + data.distance;
+                        socket.write(std + "\n");
+                        return console.log(std);
                     });
                 }
                 if (packet.subType == "alert") {
@@ -617,45 +611,71 @@ var server = net.createServer(function(socket) {
             }
 
             if (packet.type == "getTrace") {
-
-                var hour = parseInt(packet.time) * -1;
-                var to = moment(now).add(hour, 'hours');
                 console.log(packet);
+                console.log(now.toDate());
+                var hour = parseInt(packet.time), to;
+                if (hour > 10)
+                    hour = 10;
+                var check = false, t;
+
+                console.log("1-1 : ", hour);
+                console.log("1-2 : ", now.hours());
+                if (now.hours() <= hour) {
+                    console.log("2");
+                    check = true;
+                    t = 24 - (hour - now.hours());
+                    to = moment(now).add(-now.hours(), 'hours');
+                } else {
+                    console.log("1");
+                    check = false;
+                    hour *= -1;
+                    to = moment(now).add(hour, 'hours');
+                }
+                console.log(to.toDate());
 
                 Child.find({
                     username: packet.childName,
                     "location.createdAt": {
-                        $gte: to.toDate()
+                        $gte: to.toDate(),
+                        $lt: now.toDate()
                     }
                 }, function(err, data) {
                     if (err) {
                         socket.write("6-2\n");
                         return console.log(err);
                     }
-                    if (!data | !data[0].location) {
-                        console.log("6-2 No data");
-                        return socket.write("6-2 No data\n");
+                    if (data === null) {
+                        socket.write("6-2 No data\n");
+                        return console.log("6-2 No data");
                     }
-                    var len = 0,
-                        i;
+                    if (data[0] === undefined) {
+                        socket.write("6-2 No data\n");
+                        return console.log("6-2 No data");
+                    }
+
+                    var len = 0;
                     var rtn = "6-1/";
-                    var arr = {};
-                    for (i = 0; i < data[0].location.length; i++)
-                        if (data[0].location[i].createdAt > to.toDate()) {
-                            arr[len] = data[0].location[i];
+                    ////////////////////////////////////////////////////////////////////
+                    console.log(data[0].location.length, " : ", len);
+                    for (var i = 0; i < data[0].location.length; i++) {//data[0].location.length
+                        if ((data[0].location[i].createdAt.getDate() == to.date()) &&
+                          (data[0].location[i].createdAt.getHours() >= to.hours())) {
+                            console.log(i, " : ", data[0].location[i].createdAt, " / ", to.toDate());
+                            rtn += data[0].location[i].latitude + '/' + data[0].location[i].longitude + '/';
                             len++;
-                            console.log(data[0].location[i].createdAt);
                         }
-                    if (len < 11) {
-                        for (i = 0; i < len; i++) {
-                            rtn += arr[i].latitude + '/' + arr[i].longitude + '/';
-                            //rtn += data.location[i].latitude + ':' + data.location[i].longitude + '/';
+                    }
+                    console.log(data[0].location.length, " : ", len);
+                    if (check) { // 어제
+                        for (var i = 0; i < data[0].location.length; i++) {//data[0].location.length
+                            if ((data[0].location[i].createdAt.getDate() == to.date()-1) &&
+                              (data[0].location[i].createdAt.getHours() >= t)) {
+                                console.log(i, " : ", data[0].location[i].createdAt, " / ", to.toDate());
+                                rtn += data[0].location[i].latitude + '/' + data[0].location[i].longitude + '/';
+                                len++;
+                            }
                         }
-                    } else {
-                        for (i = 0; i < 10; i++) {
-                            var incre = parseInt(len / 10) * i;
-                            rtn += arr[incre].latitude + '/' + arr[incre].longitude + '/';
-                        }
+                        console.log(data[0].location.length, " : ", len);
                     }
                     socket.write(rtn + '\n');
                     return console.log(rtn);
@@ -667,8 +687,51 @@ var server = net.createServer(function(socket) {
             ///////////////////////////////////////////////////////////////////////////
 
             ///////////////////////////////////////////////////////////////////////////
-            // SUBWAY GCM //
+            // SUBWAY GCM // EMERGENCY //
             ///////////////////////////////////////////////////////////////////////////
+            if (packet.type == "emergency") {
+                var tName;
+                query = getChildQuery(packet.username);
+                query.exec(function(err, data) {
+                    if (err) return console.log(err);
+                    if (data === null) {
+                        return console.log("Wrong child");
+                    }
+                    tName = data.parentName;
+
+                    var query2 = getParentQuery(tName);
+                    query2.exec(function(err, data2) {
+                        if (err) return console.log(err);
+                        if (data2 === null) {
+                            return console.log("Wrong parent");
+                        }
+
+                        if (data2.gcmOn === true) {
+                            var token = data2.token;
+                            registrationIds.push(token);
+                            var msg = '아이 ' + packet.username + '가 위험합니다!!!';
+                            var message = new gcm.Message({
+                                collapseKey: 'demo',
+                                delayWhileIdle: true,
+                                timeToLive: 3,
+                                data: {
+                                    title: 'Emergency Alert',
+                                    message: msg,
+                                    desc: 'hi',
+                                    custom_key1: 'custom data1',
+                                    custom_key2: 'custom data2'
+                                }
+                            });
+
+                            sender.send(message, registrationIds, 4, function(err, result) {
+                                console.log(result);
+                            });
+                            registrationIds.pop();
+                        }
+                        return console.log('Emergency push done');
+                    });
+                });
+            }
 
             if (packet.type == "noticeSubway") {
                 var tName;
