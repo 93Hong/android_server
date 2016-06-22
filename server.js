@@ -476,6 +476,27 @@ var server = net.createServer(function(socket) {
 
                     //////////////////// 한시간 이상 업뎃 안되있으면
                     if (data.location[address].createdAt.getHours() < current.getHours()) {
+                        var token = data.token;
+                        registrationIds.push(token);
+
+                        var message = new gcm.Message({
+                            collapseKey: 'demo',
+                            delayWhileIdle: true,
+                            timeToLive: 3,
+                            data: {
+                                title: '지금 안전하니',
+                                message: '빨리 접속하세요!!',
+                                desc: 'hi',
+                                custom_key1: 'custom data1',
+                                custom_key2: 'custom data2'
+                            }
+                        });
+
+                        sender.send(message, registrationIds, 4, function(err, result) {
+                            console.log(result);
+                        });
+                        registrationIds.pop();
+
                         socket.write('7-1/' + data.username + '/' + lat + '/' + lng + '/' + spd + '\n');
                         return console.log('7-1/', data.username, '/', lat, '/', lng, '/', spd);
                     } else {
